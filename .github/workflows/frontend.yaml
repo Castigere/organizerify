@@ -10,7 +10,6 @@ jobs:
     # Job name is Greeting
     name: Greeting
     # This job runs on Linux
-    paths:
     runs-on: ubuntu-latest
     steps:
       # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
