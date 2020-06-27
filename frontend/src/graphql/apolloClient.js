@@ -4,7 +4,7 @@ import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import { ApolloLink, split } from 'apollo-link';
-import consoleLogger from 'apollo-link-console-log';
+import consoleLogger from '@castigere/apollo-link-console-log';
 
 const cache = new InMemoryCache();
 

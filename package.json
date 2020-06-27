@@ -12,7 +12,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "concurrently --kill-others  \"yarn --cwd backend start:dev\" \"yarn --cwd frontend start\"",
+    "start": "concurrently --kill-others  \"yarn --cwd backend start:dev\" \"yarn --cwd frontend dev\"",
     "build:packages": "concurrently \"yarn --cwd packages/apollo-link-console-log build:js\""
   },
   "devDependencies": {
