@@ -51,7 +51,7 @@ jobs:
           prerelease: false
 
       - name: Create release asset
-        run: zip -jv bundle.zip ./frontend/build/*.*
+        run: zip -jrv bundle.zip ./frontend/build/*.*
 
       - name: Upload Release Asset
         id: upload-release-asset
