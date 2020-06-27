@@ -1,0 +1,52 @@
+{
+  "name": "apollo-link-console-log",
+  "version": "1.1.2",
+  "description": "Console logger middleware for apollo link",
+  "main": "./lib/index",
+  "scripts": {
+    "build:js": "babel src --out-dir lib",
+    "clean": "rimraf lib dist",
+    "build": "npm-run-all clean -p build:* -s",
+    "eslint": "eslint src/**"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "acccess": "public"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.2.0",
+    "babel-cli": "^6.26.0",
+    "eslint": "^6.3.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.0"
+  },
+  "dependencies": {
+    "apollo-link": "^1.2.12",
+    "graphql-tag": "^2.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/castigere/apollo-link-console-log.git"
+  },
+  "keywords": [
+    "graphql",
+    "apollo-link",
+    "logger",
+    "console"
+  ],
+  "author": "Even Haasted",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/castigere/apollo-link-console-log/issues"
+  },
+  "homepage": "https://github.com/castigere/apollo-link-console-log#readme"
+}
