@@ -1,4 +1,4 @@
-name: Organizerify Backend deploy
+name: Organizerify backend deploy
 
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
         run: yarn build:packages
 
       - name: Build frontend
-        run: yarn build:frontend
+        run: yarn build:backend
 
       - name: Create tag for release
         id: create-tag
@@ -46,13 +46,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.create-tag.outputs.tag }}
-          release_name: Organizerify/Frontend@${{ steps.create-tag.outputs.tag }}
+          release_name: Organizerify/Backend@${{ steps.create-tag.outputs.tag }}
           draft: false
           prerelease: false
 
       - name: Create release asset
-        run: zip -rv bundle.zip ./
-        working-directory: frontend/build
+        run: zip -rv server.zip ./
+        working-directory: backend/build
 
       - name: Upload Release Asset
         id: upload-release-asset
@@ -61,6 +61,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: ./frontend/build/bundle.zip
-          asset_name: bundle.zip
+          asset_path: ./backend/build/server.zip
+          asset_name: server.zip
           asset_content_type: application/zip

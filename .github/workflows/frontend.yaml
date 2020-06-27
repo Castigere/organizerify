@@ -1,9 +1,9 @@
-name: Organizerify Frontend deploy
+name: Organizerify frontend deploy
 
 on:
   push:
-    branches:
-      - master
+    paths:
+      - 'frontend/**'
 
 jobs:
   build-tag-and-release-frontend:
