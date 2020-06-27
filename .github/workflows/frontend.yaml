@@ -52,7 +52,7 @@ jobs:
 
       - name: Create release asset
         run: zip -rv bundle.zip *.*
-        path: frontend/build
+        working-directory: frontend/build
 
       - name: Upload Release Asset
         id: upload-release-asset
