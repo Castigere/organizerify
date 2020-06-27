@@ -12,9 +12,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Build all packages
-        run: yarn build:packages
       - name: Download and link dependencies
         run: yarn
+      - name: Build all packages
+        run: yarn build:packages
       - name: Build frontend
         run: yarn build:frontend
