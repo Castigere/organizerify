@@ -35,14 +35,17 @@ jobs:
       - name: Build frontend
         run: yarn build:frontend
 
+      - name: Create tag for release
+        run: echo "::set-env name=TAG::$(git log -1 --pretty='%ad_%h' --date=format:'%Y%m%d%H%M%S')"
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${TAG}
+          release_name: Release ${TAG}
           body: |
             Changes in this Release
             - First Change
