@@ -32,7 +32,7 @@ jobs:
       - name: Build all packages
         run: yarn build:packages
 
-      - name: Build frontend
+      - name: Build backend
         run: yarn build:backend
 
       - name: Create tag for release
