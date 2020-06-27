@@ -6,10 +6,15 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-release-frontend:
     name: Build packages and frontend
     runs-on: ubuntu-latest
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Download dependencies
+        run: yarn
+      - name: Build all packages
+        run: yarn build:packages
+      - name: Build frontend
+        run: yarn build:frontend
