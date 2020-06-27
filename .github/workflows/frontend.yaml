@@ -2,8 +2,8 @@ name: Organizerify deploy (frontend)
 
 on:
   push:
-    paths:
-      - '/**'
+    branches:
+      - master
 
 jobs:
   build:
