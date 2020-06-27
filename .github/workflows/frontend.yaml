@@ -37,7 +37,7 @@ jobs:
 
       - name: Create tag for release
         id: create-tag
-        run: echo "::set-output name=tag::$(git log -1 --pretty='%ad_%h' --date=format:'%d.%m.%Y-%H:%M')"
+        run: echo "::set-output name=tag::$(git log -1 --pretty='%ad_%h' --date=format:'%d.%m.%Y-%H%M')"
 
       - name: Create Release
         id: create-release
