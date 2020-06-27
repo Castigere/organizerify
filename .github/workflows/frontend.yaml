@@ -1,4 +1,4 @@
-name: Organizerify deploy (frontend)
+name: Organizerify Frontend deploy
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  build-and-release-frontend:
-    name: Build packages and frontend
+  build-tag-and-release-frontend:
+    name: Download packages, build and tag/release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -39,7 +39,7 @@ jobs:
         id: create-tag
         run: echo "::set-output name=tag::$(git log -1 --pretty='%ad_%h' --date=format:'%d.%m.%Y-%H%M')"
 
-      - name: Create Release
+      - name: Create release
         id: create-release
         uses: actions/create-release@v1
         env:
@@ -47,9 +47,11 @@ jobs:
         with:
           tag_name: ${{ steps.create-tag.outputs.tag }}
           release_name: Release ${{ steps.create-tag.outputs.tag }}
-          # body: |
-          #   Changes in this Release
-          #   - First Change
-          #   - Second Change
           draft: false
           prerelease: false
+
+      - name: Create release asset
+      - uses: actions/upload-artifact@v2
+        with:
+          name: frontend
+          path: ./frontend/build/
