@@ -1,0 +1,7 @@
+{
+  "name": "backend-config",
+  "version": "1.0.0",
+  "description": "config for backend server app",
+  "main": "index.js",
+  "license": "MIT"
+}

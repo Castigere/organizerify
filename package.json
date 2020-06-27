@@ -1,0 +1,20 @@
+{
+  "name": "organizerify",
+  "version": "1.0.0",
+  "description": "organizerify monorepo",
+  "main": "index.js",
+  "repository": "https://github.com/castigere/organizerify",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "concurrently --kill-others  \"yarn --cwd backend start:dev\" \"yarn --cwd frontend start\""
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
+}

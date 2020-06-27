@@ -1,0 +1,32 @@
+.toast-wrapper {
+  margin: -1.27em;
+
+  /* margin-bottom: -1.26em; */
+}
+.toast {
+  border-radius: 0.2em;
+  color: white;
+  margin: 0.05em;
+  width: 24em;
+}
+.info {
+  background: rgb(53, 53, 53);
+}
+.warn {
+  background: rgb(233, 178, 91);
+}
+.error {
+  background: rgb(128, 36, 28);
+}
+
+@media only screen and (max-width: 480px) {
+  .toast-wrapper {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+  .toast {
+    color: white;
+    width: 100%;
+    margin: 0;
+  }
+}
