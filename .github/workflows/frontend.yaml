@@ -51,9 +51,7 @@ jobs:
           prerelease: false
 
       - name: Create release asset
-        uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -qq -r bundle.zip ./frontend/build/*.*
+        run: zip -qq -r bundle.zip ./frontend/build/*.*
 
       - name: Upload Release Asset
         id: upload-release-asset
