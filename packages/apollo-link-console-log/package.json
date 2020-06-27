@@ -1,5 +1,5 @@
 {
-  "name": "apollo-link-console-log",
+  "name": "@organizerify/apollo-link-console-log",
   "version": "1.1.2",
   "description": "Console logger middleware for apollo link",
   "main": "./lib/index",
