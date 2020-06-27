@@ -16,7 +16,7 @@ const App = ({ isUserAuthenticated, isAppReady }) => {
     isAppReady && isUserAuthenticated && subscriptions.enableAllSubscriptions();
   }, [isUserAuthenticated, isAppReady]);
 
-  console.log('dette er en endring!');
+  console.log('dette er en endring!!');
 
   return isAppReady ? (
     <Wrapper>
