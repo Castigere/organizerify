@@ -5,19 +5,13 @@
   "main": "start.js",
   "license": "MIT",
   "scripts": {
-    "start:prod": "better-npm-run prod",
+    "start:prod": "node server.js",
     "start:dev": "better-npm-run dev",
     "build": "better-npm-run build"
   },
   "betterScripts": {
     "dev": {
       "command": "nodemon --exec babel-node src/server.js",
-      "env": {
-        "NODE_ENV": "development"
-      }
-    },
-    "prod": {
-      "command": "node build/server.js",
       "env": {
         "NODE_ENV": "development"
       }

@@ -2,8 +2,8 @@ name: Organizerify backend deploy
 
 on:
   push:
-    branches:
-      - master
+    paths:
+      - 'backend/**'
 
 jobs:
   build-tag-and-release-backend:

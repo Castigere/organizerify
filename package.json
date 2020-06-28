@@ -15,9 +15,11 @@
     "dev": "concurrently --kill-others  \"yarn --cwd backend start:dev\" \"yarn --cwd frontend dev\"",
     "build:frontend": "yarn --cwd frontend build",
     "build:backend": "yarn --cwd backend build",
-    "build:packages": "yarn --cwd packages/apollo-link-console-log build:js"
+    "build:packages": "yarn --cwd packages/apollo-link-console-log build:js",
+    "build:app": "yarn --cwd packages/apollo-link-console-log build:js && --cwd frontend build && yarn --cwd backend build && copyfiles backend/build build && copyfiles backend/package.json build && copyfiles frontend/build build/static"
   },
   "devDependencies": {
-    "concurrently": "^5.2.0"
+    "concurrently": "^5.2.0",
+    "copyfiles": "^2.3.0"
   }
 }
