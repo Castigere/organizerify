@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import * as config from 'config';
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { StoreProvider } from './context/store';
 import { Messaging } from './containers/Messaging';
 
 import './app.css';
+
+console.log('organizerify', config);
 
 ReactDOM.render(
   <Router>

@@ -8,7 +8,7 @@ import { user } from '../../tasks';
 import evaluateNextStep from './rules';
 import validation from './validation';
 import steps from './steps';
-import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from '../../config';
+import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 
 import Email from './steps/Email';
 import Password from './steps/Password';

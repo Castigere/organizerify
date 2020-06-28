@@ -4,6 +4,4 @@ const doThenSetState = async (operation, args, setter) => {
   setter(result);
 };
 
-const nothing = () => {};
-
-export { doThenSetState, nothing };
+export { doThenSetState };
