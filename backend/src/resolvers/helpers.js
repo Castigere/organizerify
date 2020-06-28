@@ -1,4 +1,4 @@
-import { QUERY_LIMIT } from '../config/constants';
+import { QUERY_LIMIT } from '../config';
 
 export const toCursorHash = string => Buffer.from(string).toString('base64');
 

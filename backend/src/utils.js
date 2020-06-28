@@ -1,20 +1,20 @@
 import { unsign } from 'cookie-signature';
 import gql from 'graphql-tag';
 
-import { sessionSecret, cookiePrefix } from './config/config';
+import { SESSION_SECRET, COOKIE_PREFIX } from './config';
 import { SessionMongoSchema } from './models';
 
 const findUserSession = async webSocket => {
   try {
     const signedSID =
       webSocket.upgradeReq.headers.cookie &&
-      decodeURIComponent(webSocket.upgradeReq.headers.cookie.slice(cookiePrefix.length + 5));
+      decodeURIComponent(webSocket.upgradeReq.headers.cookie.slice(COOKIE_PREFIX.length + 5));
 
     if (!signedSID) {
       throw 'No user session, user is not authenticated';
     }
 
-    const SID = unsign(signedSID, sessionSecret);
+    const SID = unsign(signedSID, SESSION_SECRET);
 
     if (!SID) {
       throw 'Invalid cookie, user is not authenticated';

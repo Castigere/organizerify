@@ -7,7 +7,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const { host, mongoDb, sessionSecret, cookiePrefix } = require('./config/config');
+// const { host, mongoDb, sessionSecret, cookiePrefix } = require('./config');
+import { HOST, DATABASE_URI, SESSION_SECRET, COOKIE_PREFIX, NODE_ENV } from './config';
 const router = require('./routes/routes');
 require('./config/passport')(passport);
 
@@ -28,13 +29,13 @@ app.use(
 
 app.use(
   session({
-    name: cookiePrefix,
-    secret: sessionSecret,
+    name: COOKIE_PREFIX,
+    secret: SESSION_SECRET,
     cookie: {
       path: '/',
-      secure: process.env.NODE_ENV === 'production',
+      secure: NODE_ENV === 'production',
       sameSite: false,
-      domain: host,
+      domain: HOST,
       maxAge: 900000000,
       httpOnly: false
     },
@@ -63,7 +64,7 @@ apolloServer.installSubscriptionHandlers(httpServer);
 
 mongoose.Promise = require('bluebird');
 
-mongoose.connect(mongoDb, {
+mongoose.connect(DATABASE_URI, {
   // https://mongoosejs.com/docs/deprecations.html
   useNewUrlParser: true,
   useFindAndModify: false,

@@ -1,7 +1,14 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const { UserMongoSchema } = require('../models/userMongoSchema');
-const { facebookAuth, googleAuth } = require('./config');
+import {
+  FACEBOOK_CLIENT_ID,
+  FACEBOOK_CLIENT_SECRET,
+  FACEBOOK_CALLBACK_URL,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  GOOGLE_CALLBACK_URL
+} from './';
 
 module.exports = passport => {
   /**
@@ -24,9 +31,9 @@ module.exports = passport => {
   passport.use(
     new FacebookStrategy(
       {
-        clientID: facebookAuth.clientID,
-        clientSecret: facebookAuth.clientSecret,
-        callbackURL: facebookAuth.callbackURL
+        clientID: FACEBOOK_CLIENT_ID,
+        clientSecret: FACEBOOK_CLIENT_SECRET,
+        callbackURL: FACEBOOK_CALLBACK_URL
       },
       function(token, refreshToken, profile, done) {
         process.nextTick(() => {
@@ -65,9 +72,9 @@ module.exports = passport => {
   passport.use(
     new GoogleStrategy(
       {
-        clientID: googleAuth.clientID,
-        clientSecret: googleAuth.clientSecret,
-        callbackURL: googleAuth.callbackURL
+        clientID: GOOGLE_CLIENT_ID,
+        clientSecret: GOOGLE_CLIENT_SECRET,
+        callbackURL: GOOGLE_CALLBACK_URL
       },
       function(token, refreshToken, profile, done) {
         process.nextTick(() => {
