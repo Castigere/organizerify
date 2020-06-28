@@ -4,18 +4,18 @@ import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import { ApolloLink, split } from 'apollo-link';
-import { PROTOCOL, HOSTNAME } from 'config';
+import { PROTOCOL, HOSTNAME, PORT, WEBSOCKET_PROTOCOL } from 'config';
 import consoleLogger from '@castigere/apollo-link-console-log';
 
 const cache = new InMemoryCache();
 
 const httpLink = new HttpLink({
-  uri: `${PROTOCOL}//${HOSTNAME}:8080/graphql`,
+  uri: `${PROTOCOL}//${HOSTNAME}:${PORT}/graphql`,
   credentials: 'include'
 });
 
 const wsLink = new WebSocketLink({
-  uri: `ws://${HOSTNAME}:8080/graphql`,
+  uri: `${WEBSOCKET_PROTOCOL}//${HOSTNAME}:${PORT}/graphql`,
   options: {
     reconnect: true
   }

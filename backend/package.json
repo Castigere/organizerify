@@ -5,9 +5,9 @@
   "main": "start.js",
   "license": "MIT",
   "scripts": {
-    "start:prod": "node server.js",
+    "start": "node server.js",
     "start:dev": "better-npm-run dev",
-    "build": "better-npm-run build"
+    "transpile": "better-npm-run transpile"
   },
   "betterScripts": {
     "dev": {
@@ -16,7 +16,7 @@
         "NODE_ENV": "development"
       }
     },
-    "build": {
+    "transpile": {
       "command": "babel src -d build",
       "env": {
         "NODE_ENV": "development"

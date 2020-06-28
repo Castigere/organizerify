@@ -17,7 +17,7 @@ const startServer = () => {
   httpServer.listen(PORT, () => {
     console.log(`SERVER HOSTNAME:         ${HOST}`);
     console.log(`PORT:                    ${PORT}`);
-    console.log(`API VERSION:             ${API_VERSION}`);
+    console.log(`API VERSION:             /${API_VERSION}`);
     console.log(`GRAPH QL:                ${apolloServer.graphqlPath}`);
     console.log(`FACEBOOK AUTH CALLBACK:  ${FACEBOOK_CALLBACK_URL}`);
     console.log(`GOOGLE AUTH CALLBACK:    ${GOOGLE_CALLBACK_URL}`);

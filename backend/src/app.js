@@ -7,8 +7,15 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-// const { host, mongoDb, sessionSecret, cookiePrefix } = require('./config');
-import { HOST, DATABASE_URI, SESSION_SECRET, COOKIE_PREFIX, NODE_ENV } from './config';
+import {
+  HOST,
+  DATABASE_URI,
+  SESSION_SECRET,
+  COOKIE_PREFIX,
+  CORS_ORIGIN,
+  SESSION_COOKIE_SAMESITE,
+  SESSION_COOKIE_SECURE
+} from './config';
 const router = require('./routes/routes');
 require('./config/passport')(passport);
 
@@ -20,7 +27,7 @@ const mongoSessionStore = new MongoStore({
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: CORS_ORIGIN,
     credentials: true,
     allowedHeaders: 'Content-Type, Accept, Authorization',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS'
@@ -33,7 +40,7 @@ app.use(
     secret: SESSION_SECRET,
     cookie: {
       path: '/',
-      secure: NODE_ENV === 'production',
+      secure: false,
       sameSite: false,
       domain: HOST,
       maxAge: 900000000,

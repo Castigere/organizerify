@@ -8,18 +8,21 @@ const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
 const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
 const FACEBOOK_CALLBACK_URL =
   process.env.NODE_ENV === 'development'
-    ? `http://${process.env.HOST}:${process.env.PORT}${process.env.API_VERSION}/auth/facebook/callback`
-    : `https://${process.env.HOST}:${process.env.PORT}${process.env.API_VERSION}/auth/facebook/callback`;
+    ? `http://${process.env.HOST}:${process.env.PORT}/${process.env.API_VERSION}/auth/facebook/callback`
+    : `https://${process.env.HOST}:${process.env.PORT}/${process.env.API_VERSION}/auth/facebook/callback`;
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const GOOGLE_CALLBACK_URL =
   process.env.NODE_ENV === 'development'
-    ? `http://${process.env.HOST}:${process.env.PORT}${process.env.API_VERSION}/auth/google/callback`
-    : `https://${process.env.HOST}:${process.env.PORT}${process.env.API_VERSION}/auth/google/callback`;
+    ? `http://${process.env.HOST}:${process.env.PORT}/${process.env.API_VERSION}/auth/google/callback`
+    : `https://${process.env.HOST}:${process.env.PORT}/${process.env.API_VERSION}/auth/google/callback`;
 const QUERY_LIMIT = 100;
 const DUMMY_CONSTANT = 1337;
 const COOKIE_PREFIX = `aaa${APPLICATION_NAME}`;
 const NODE_ENV = process.env.NODE_ENV;
+const CORS_ORIGIN = NODE_ENV === 'production' ? `https://${HOST}:${PORT}` : 'http://localhost:3000';
+const SESSION_COOKIE_SECURE = NODE_ENV === 'production';
+const SESSION_COOKIE_SAMESITE = NODE_ENV === 'production';
 
 export {
   APPLICATION_NAME,
@@ -37,5 +40,8 @@ export {
   QUERY_LIMIT,
   DUMMY_CONSTANT,
   COOKIE_PREFIX,
-  NODE_ENV
+  NODE_ENV,
+  CORS_ORIGIN,
+  SESSION_COOKIE_SECURE,
+  SESSION_COOKIE_SAMESITE
 };

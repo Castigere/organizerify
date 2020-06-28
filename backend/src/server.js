@@ -7,10 +7,10 @@ const path = require('path');
 const { app } = require('./app');
 const { startApp } = require('./start');
 
-app.use(express.static(`${__dirname}/static`));
+app.use(express.static(`${__dirname}/build`));
 
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, '/static/index.html'));
+  res.sendFile(path.join(__dirname, '/build/index.html'));
 });
 
 startApp();
