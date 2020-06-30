@@ -9,13 +9,13 @@ const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
 const FACEBOOK_CALLBACK_URL =
   process.env.NODE_ENV === 'development'
     ? `http://${process.env.HOST}:${process.env.PORT}/${process.env.API_VERSION}/auth/facebook/callback`
-    : `https://${process.env.HOST}:${process.env.PORT}/${process.env.API_VERSION}/auth/facebook/callback`;
+    : `https://${process.env.HOST}${process.env.API_VERSION}/auth/facebook/callback`;
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const GOOGLE_CALLBACK_URL =
   process.env.NODE_ENV === 'development'
     ? `http://${process.env.HOST}:${process.env.PORT}/${process.env.API_VERSION}/auth/google/callback`
-    : `https://${process.env.HOST}:${process.env.PORT}/${process.env.API_VERSION}/auth/google/callback`;
+    : `https://${process.env.HOST}/${process.env.API_VERSION}/auth/google/callback`;
 const QUERY_LIMIT = 100;
 const DUMMY_CONSTANT = 1337;
 const COOKIE_PREFIX = `aaa${APPLICATION_NAME}`;

@@ -9,12 +9,11 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 import {
   HOST,
+  API_VERSION,
   DATABASE_URI,
   SESSION_SECRET,
   COOKIE_PREFIX,
-  CORS_ORIGIN,
-  SESSION_COOKIE_SAMESITE,
-  SESSION_COOKIE_SECURE
+  CORS_ORIGIN
 } from './config';
 const router = require('./routes/routes');
 require('./config/passport')(passport);
@@ -55,7 +54,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', router);
+app.use(`/${API_VERSION}`, router);
 
 app.use((err, req, res, next) => {
   res.locals.message = err.message;

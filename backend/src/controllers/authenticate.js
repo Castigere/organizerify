@@ -4,7 +4,9 @@ const passport = require('passport');
  * GOOGLE AUTHENTICATE
  */
 exports.authenticateGoogle = () => {
+  console.log('hey ho');
   return (req, res, next) => {
+    console.log('requet!');
     passport.authenticate('google', {
       scope: ['profile'],
       successRedirect: 'http://localhost:3000/',
