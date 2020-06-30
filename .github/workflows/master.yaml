@@ -32,13 +32,12 @@ jobs:
       - name: Build
         run: yarn build:deployment
 
-      - name: Deploy
-        uses: castigere/nc-deploy@master
-        with:
-          app-name: organizerify
-          username: ${{ secrets.DEPLOY_USER }}
-          password: ${{ secrets.DEPLY_PW }}
-          working-directory: build
+      - name: Auhenticate
+        run: node_modules/.bin/nodechef -em ${{ secrets.DEPLOY_USER }} -pw ${{ secrets.DEPLOT_PW }}
+
+      - name: Deplot
+        run: node_modules/.bin/nodechef deply -i organizerify
+        working-directory: build
 
       - name: Create tag for release
         id: create-tag
