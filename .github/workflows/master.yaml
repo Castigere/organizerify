@@ -38,7 +38,7 @@ jobs:
           app-name: organizerify
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLY_PW }}
-          working-directory: ${{ build }}
+          working-directory: build
 
       - name: Create tag for release
         id: create-tag
