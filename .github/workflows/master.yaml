@@ -33,7 +33,7 @@ jobs:
         run: yarn build:deployment
 
       - name: Debug backend folder
-        run: ls backend
+        run: ls backend/build
 
       - name: Authenticate
         run: 'node_modules/.bin/nodechef login -em ${{ secrets.DEPLOY_USER }} -pw ${{ secrets.DEPLOY_PW }}'
@@ -61,7 +61,7 @@ jobs:
         run: zip -rv organizerify.zip ./
         working-directory: build
 
-      - name: Upload Release Asset
+      - name: Upload release asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
