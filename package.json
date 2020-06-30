@@ -16,7 +16,7 @@
     "build:packages": "yarn --cwd packages/apollo-link-console-log build:js",
     "build:frontend": "yarn --cwd frontend build",
     "build:backend": "yarn --cwd backend transpile",
-    "build:copyfiles": "copyfiles -u 1 ./backend/build/**/*.* . && copyfiles -u 1 ./backend/package.json ./build && copyfiles -u 1 frontend/build/**/*.* build",
+    "build:copyfiles": "copyfiles -u 1 backend/build/**/*.* . && copyfiles -u 1 backend/package.json build && copyfiles -u 1 frontend/build/**/*.* build",
     "build:deployment": "yarn build:packages && yarn build:frontend && yarn build:backend && yarn build:copyfiles"
   },
   "devDependencies": {
