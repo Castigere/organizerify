@@ -1,13 +1,13 @@
-name: Organizerify backend deploy
+name: Organizerify deploy
 
 on:
   push:
-    paths:
-      - 'backend/build/**'
+    branches:
+      - master
 
 jobs:
-  build-tag-and-release-backend:
-    name: Download packages, build and tag/release
+  build-deploy-tag-and-release:
+    name: Download packages, build, deploy and tag/release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -29,11 +29,16 @@ jobs:
       - name: Download packages
         run: yarn
 
-      - name: Build all packages
-        run: yarn build:packages
+      - name: Build
+        run: yarn build:deployment
 
-      - name: Build backend
-        run: yarn build:backend
+      - name: Deploy
+        uses: castigere/nc-deploy@master
+        with:
+          app-name: organizerify
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLY_PW }}
+          working-directory: ${{ build }}
 
       - name: Create tag for release
         id: create-tag
@@ -46,13 +51,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.create-tag.outputs.tag }}
-          release_name: Organizerify/Backend@${{ steps.create-tag.outputs.tag }}
+          release_name: Organizerify@${{ steps.create-tag.outputs.tag }}
           draft: false
           prerelease: false
 
       - name: Create release asset
-        run: zip -rv server.zip ./
-        working-directory: backend/build
+        run: zip -rv organizerify.zip ./
+        working-directory: build
 
       - name: Upload Release Asset
         id: upload-release-asset
@@ -61,6 +66,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: ./backend/build/server.zip
-          asset_name: server.zip
+          asset_path: ./build/organizerify.zip
+          asset_name: organizerify.zip
           asset_content_type: application/zip

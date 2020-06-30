@@ -3,7 +3,7 @@ name: Organizerify frontend deploy
 on:
   push:
     paths:
-      - 'frontend/**'
+      - 'frontend/build/**'
 
 jobs:
   build-tag-and-release-frontend:
