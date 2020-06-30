@@ -32,6 +32,9 @@ jobs:
       - name: Build
         run: yarn build:deployment
 
+      - name: Debug backend folder
+        run: ls backend
+
       - name: Authenticate
         run: 'node_modules/.bin/nodechef login -em ${{ secrets.DEPLOY_USER }} -pw ${{ secrets.DEPLOY_PW }}'
 
