@@ -32,8 +32,11 @@ jobs:
       - name: Build
         run: yarn build:deployment
 
-      - name: Auhenticate
-        run: 'node_modules/.bin/nodechef -em ${{ secrets.DEPLOY_USER }} -pw ${{ secrets.DEPLOT_PW }}'
+      - name: Debug
+        run: ls build
+
+      - name: Authenticate
+        run: 'node_modules/.bin/nodechef login -em ${{ secrets.DEPLOY_USER }} -pw ${{ secrets.DEPLOT_PW }}'
 
       - name: Deploy
         run: '../node_modules/.bin/nodechef deploy -i organizerify'
