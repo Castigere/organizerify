@@ -5,6 +5,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import session from 'express-session';
+import morgan from 'morgan';
 
 const MongoStore = require('connect-mongo')(session);
 
@@ -49,6 +50,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(morgan('combined'));
 
 app.use('/', router);
 
