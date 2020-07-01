@@ -2,32 +2,9 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   overflow-x: hidden;
-  line-height: 1.8em;
   font-size: 100%;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
-  h1 {
-    font-family: 'Playfair Display SC', serif;
-    font-weight: 400;
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-family: 'Playfair Display SC', serif;
-    font-weight: 400;
-    font-size: 2rem;
-  }
-
-  h3 {
-    font-family: 'Playfair Display SC', serif;
-    font-weight: 400;
-    font-size: 1.375rem;
-  }
-  h4 {
-    font-family: 'Playfair Display SC', serif;
-    font-weight: 300;
-    font-size: 1.1rem;
-  }
   .center,
   .container {
     margin-left: auto;
