@@ -54,7 +54,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(`/${API_VERSION}`, router);
+app.use('/', router);
 
 app.use((err, req, res, next) => {
   res.locals.message = err.message;

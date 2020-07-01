@@ -1,16 +1,15 @@
 const passport = require('passport');
+import { AUTH_SUCCESS_REDIRECT_URL } from '../config';
 
 /**
  * GOOGLE AUTHENTICATE
  */
 exports.authenticateGoogle = () => {
-  console.log('hey ho');
   return (req, res, next) => {
-    console.log('requet!');
     passport.authenticate('google', {
       scope: ['profile'],
-      successRedirect: 'http://localhost:3000/',
-      failureRedirect: '/signup'
+      successRedirect: AUTH_SUCCESS_REDIRECT_URL,
+      failureRedirect: '/register'
     })(req, res, next);
   };
 };
@@ -22,8 +21,8 @@ exports.authenticateFacebook = () => {
   return (req, res, next) => {
     passport.authenticate('facebook', {
       scope: 'email',
-      successRedirect: 'http://localhost:3000/',
-      failureRedirect: '/signup'
+      successRedirect: AUTH_SUCCESS_REDIRECT_URL,
+      failureRedirect: '/register'
     })(req, res, next);
   };
 };
