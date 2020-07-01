@@ -6,10 +6,10 @@ import { FirstParagraph, Paragraph, H1, H2, H3, H4, BlockQuote } from 'component
 const Main = () => {
   return (
     <TextBox>
-      <H1>Test av header 1</H1>
-      <H2>Test av header 2</H2>
-      <H3>Test av header 3</H3>
-      <H4>Test av header 4</H4>
+      <H1>Curabitur porta</H1>
+      <H2>Nulla at euismod libero</H2>
+      <H3>Morbi congue velit</H3>
+      <H4>Maximus porttitor</H4>
       <BlockQuote>
         Morbi congue velit sapien, at accumsan turpis efficitur eu. Duis finibus lacus mi, et
         sodales dui lobortis nec.
