@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const asciify = require('asciify');
-const { httpServer, apolloServer } = require('./app');
+import mongoose from 'mongoose';
+import asciify from 'asciify';
+import { httpServer, apolloServer } from './app';
 import {
   HOST,
   DATABASE_URI,
@@ -17,7 +17,7 @@ const startServer = () => {
   httpServer.listen(PORT, () => {
     console.log(`SERVER HOSTNAME:         ${HOST}`);
     console.log(`PORT:                    ${PORT}`);
-    console.log(`API VERSION:             /${API_VERSION}`);
+    console.log(`API VERSION:             ${API_VERSION}`);
     console.log(`GRAPH QL:                ${apolloServer.graphqlPath}`);
     console.log(`FACEBOOK AUTH CALLBACK:  ${FACEBOOK_CALLBACK_URL}`);
     console.log(`GOOGLE AUTH CALLBACK:    ${GOOGLE_CALLBACK_URL}`);
@@ -25,7 +25,7 @@ const startServer = () => {
 };
 
 const serverStatus = async () => {
-  await asciify(APPLICATION_NAME, {}, (err, res) => {
+  await asciify(APPLICATION_NAME, {}, (_err, res) => {
     console.log(res);
   });
 };

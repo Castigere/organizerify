@@ -1,21 +1,17 @@
 import http from 'http';
+import path from 'path';
+import cors from 'cors';
+import express from 'express';
+import mongoose from 'mongoose';
+import passport from 'passport';
+import session from 'express-session';
+
+const MongoStore = require('connect-mongo')(session);
+
+import { HOST, DATABASE_URI, SESSION_SECRET, COOKIE_PREFIX, CORS_ORIGIN } from './config';
+import router from './routes/routes';
 import apolloServer from './apolloServer';
 
-const cors = require('cors');
-const express = require('express');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-import {
-  HOST,
-  API_VERSION,
-  DATABASE_URI,
-  SESSION_SECRET,
-  COOKIE_PREFIX,
-  CORS_ORIGIN
-} from './config';
-const router = require('./routes/routes');
 require('./config/passport')(passport);
 
 const app = express();
@@ -56,11 +52,10 @@ app.use(passport.session());
 
 app.use('/', router);
 
-app.use((err, req, res, next) => {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  res.status(err.status || 500).send(err);
-  next();
+app.use(express.static(`${__dirname}/build`));
+
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, '/build/index.html'));
 });
 
 apolloServer.applyMiddleware({ app, cors: false, path: '/graphql' });
