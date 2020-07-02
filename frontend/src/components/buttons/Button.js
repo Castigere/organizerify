@@ -21,6 +21,10 @@ const Button = styled.button`
     border-radius: 2px;
   }
 
+  @media only screen and (max-width: 57em) {
+    height: 3em;
+  }
+
   ${({ right }) =>
     right &&
     css`
