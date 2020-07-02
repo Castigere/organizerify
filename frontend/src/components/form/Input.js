@@ -15,6 +15,11 @@ const InputStyle = styled.input`
   }
   @media only screen and (max-width: 57em) {
     width: 100%;
+    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 `;
 

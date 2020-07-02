@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FieldsetStyle = styled.fieldset`
-  margin: 40px;
-  margin-left: 10px;
+  margin: 10px;
   border: 0;
   border-bottom: 1px solid #cccc;
   @media only screen and (max-width: 57em) {
