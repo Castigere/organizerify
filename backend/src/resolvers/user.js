@@ -3,9 +3,8 @@ import { isAuthenticated, isAdmin, isCurrentUserOrAdmin } from './authorization'
 
 export default {
   Query: {
-    getCurrentUser: combineResolvers(
-      isAuthenticated,
-      (_parent, _args, { currentUser }) => currentUser
+    getCurrentUser: combineResolvers(isAuthenticated, (_parent, _args, { currentUser, models }) =>
+      models.UserMongoSchema.findById(currentUser._id)
     ),
 
     getUserById: combineResolvers(isAuthenticated, (_parent, { id }, { models }) =>

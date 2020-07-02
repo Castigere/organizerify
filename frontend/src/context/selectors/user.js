@@ -12,4 +12,6 @@ const getUserFullName = ({ loggedInUser }) => {
   return 'mr. Noname Assholeius';
 };
 
-export default { getUserFullName };
+const getCurrentUser = ({ loggedInUser }) => loggedInUser;
+
+export default { getUserFullName, getCurrentUser };

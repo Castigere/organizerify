@@ -2,10 +2,11 @@ import createUser from './createUser';
 import loginUser from './loginUser';
 import logoutUser from './logoutUser';
 import signUpUser from './signUpUser';
+import updateUser from './updateUser';
 
 import { apolloClient } from '../apolloClient';
 
-const mutations = { createUser, loginUser, logoutUser, signUpUser };
+const mutations = { createUser, loginUser, logoutUser, signUpUser, updateUser };
 
 const wrapper = items => {
   const newItems = {};

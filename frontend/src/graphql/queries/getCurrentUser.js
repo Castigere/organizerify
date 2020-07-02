@@ -6,6 +6,7 @@ const getCurrentUser = gql`
       displayName
       email
       firstName
+      mobileNumber
       id
       lastName
       middleName

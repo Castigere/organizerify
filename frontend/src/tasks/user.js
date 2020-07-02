@@ -24,6 +24,15 @@ const tasks = {
       })
       .catch(err => errorHandling(err));
   },
+  updateCurrentUser: args => {
+    actions.submit.setSubmitting();
+    mutations
+      .updateUser(args)
+      .then(user => {
+        actions.user.setLoggedInUser(user.data.updateUser);
+      })
+      .catch(err => errorHandling(err));
+  },
   loginUser: args => {
     actions.submit.setSubmitting();
     return mutations

@@ -39,7 +39,7 @@ module.exports = passport => {
         process.nextTick(() => {
           UserMongoSchema.findOne({ 'facebook.id': profile.id }, (err, user) => {
             if (err) return done(err);
-            if (user && user.status === 'active') {
+            if ((user && user.status === 'active') || 'incomplete') {
               return done(null, user);
             } else {
               let newUser = new UserMongoSchema();
@@ -50,10 +50,12 @@ module.exports = passport => {
               newUser.firstName = '';
               newUser.middleName = '';
               newUser.lastName = '';
-              newUser.status = 'active';
+              newUser.status = 'incomplete';
               newUser.type = 'facebook';
               newUser.language = 'en';
-              newUser.logonMessage = 'incompleteProfile';
+              newUser.logonMessage = '';
+              newUser.mobileNumber = '';
+              newUser.email = '';
               newUser.save(err => {
                 if (err) throw err;
                 return done(null, newUser);
@@ -80,7 +82,7 @@ module.exports = passport => {
         process.nextTick(() => {
           UserMongoSchema.findOne({ 'google.id': profile.id }, (err, user) => {
             if (err) return done(err);
-            if (user && user.status === 'active') {
+            if ((user && user.status === 'active') || 'incomplete') {
               return done(null, user);
             } else {
               let newUser = new UserMongoSchema();
@@ -91,8 +93,10 @@ module.exports = passport => {
               newUser.firstName = profile.name.givenName;
               newUser.middleName = '';
               newUser.lastName = profile.name.familyName;
-              newUser.status = 'active';
+              newUser.status = 'incomplete';
               newUser.type = 'google';
+              newUser.mobileNumber = '';
+              newUser.email = '';
               newUser.save(err => {
                 if (err) throw err;
                 return done(null, newUser);

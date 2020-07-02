@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import PrivateRoute from 'utils/PrivateRoute';
 
-import { Front, Main, Register, Users, NewUser, NotFound, CompleteRegistration } from 'pages';
+import { Front, Main, Register, Users, NewUser, NotFound, IncompleteUser } from 'pages';
 
 const Routes = ({ isUserAuthenticated }) => {
   return (
@@ -12,8 +12,8 @@ const Routes = ({ isUserAuthenticated }) => {
       <Route path="/register" component={Register} />
       <PrivateRoute
         exact
-        path="/completeregistration"
-        component={CompleteRegistration}
+        path="/incompleteuser"
+        component={IncompleteUser}
         isUserAuthenticated={isUserAuthenticated}
         redirect="/register"
       />

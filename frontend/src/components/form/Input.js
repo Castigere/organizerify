@@ -37,10 +37,10 @@ const Label = styled.label`
   }
 `;
 
-const Input = ({ children, label }) => {
+const Input = ({ children, label, ...props }) => {
   return (
     <Label>
-      {label}:<InputStyle>{children}</InputStyle>
+      {label}:<InputStyle {...props}>{children}</InputStyle>
     </Label>
   );
 };
