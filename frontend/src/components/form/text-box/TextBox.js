@@ -6,7 +6,6 @@ const TextBox = styled.div`
   margin-top: 2em;
   margin-bottom: 2em;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  justify-content: center;
   padding: 3%;
 `;
 

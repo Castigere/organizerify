@@ -6,7 +6,7 @@ import withContext from 'context';
 import { user } from 'tasks';
 
 import { ProfileImageMedium } from 'components/images';
-import { Button } from 'components/schema';
+import { Button } from 'components/buttons';
 
 import defaultImage from 'assets/default-user.svg';
 

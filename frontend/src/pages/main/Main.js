@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TextBox } from 'components/schema';
+import { TextBox } from 'components/form';
 import { FirstParagraph, Paragraph, H1, H2, H3, H4, BlockQuote } from 'components/typography';
 
 const Main = () => {
