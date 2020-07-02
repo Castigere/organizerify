@@ -50,8 +50,19 @@ export default {
     updateUser: combineResolvers(
       isAuthenticated,
       isCurrentUserOrAdmin,
-      (_parent, { id, ...args }, { models, mongoUpdateOptions }) =>
-        models.UserMongoSchema.findByIdAndUpdate(id, args, mongoUpdateOptions)
+      (_parent, { id, ...args }, { models, mongoUpdateOptions }) => {
+        /**
+         * Checking length of required fields for an activated user.
+         * If one or more strings are empty, user will be set to status incomplete.
+         */
+        args.status = 'active';
+        [args.firstName, args.MiddleName, args.lastName, args.email, args.mobileNumber].map(
+          item => {
+            if (item < 1) args.status = 'incomplete';
+          }
+        );
+        return models.UserMongoSchema.findByIdAndUpdate(id, args, mongoUpdateOptions);
+      }
     ),
 
     deleteUser: combineResolvers(
@@ -81,9 +92,7 @@ export default {
     logoutUser: async (_parent, _args, { req }) => {
       try {
         await req.logout();
-        req.session.destroy(function(err) {
-          // cannot access session here
-        });
+        req.session.destroy(function(err) {});
         return true;
       } catch (err) {
         return err;

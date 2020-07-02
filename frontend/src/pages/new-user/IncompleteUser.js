@@ -12,7 +12,6 @@ import { Button } from 'components/buttons';
 const IncompleteUser = ({
   currentUser: { firstName, middleName, lastName, email, mobileNumber, id }
 }) => {
-  console.log('ID', firstName, middleName, lastName, email, mobileNumber);
   return (
     <TextBox>
       <H1>Incomplete registration</H1>
@@ -21,7 +20,6 @@ const IncompleteUser = ({
         onSubmit={(values, _actions) => user.updateCurrentUser({ ...values, id })}
       >
         {props => {
-          // console.log('formik', props);
           return (
             <Form onSubmit={props.handleSubmit}>
               <Fieldset legend="Personal information">
