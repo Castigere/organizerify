@@ -1,6 +1,7 @@
 import { mutations, queries } from '../graphql';
 import { actions } from '../context/store';
 import errorHandling from './utils';
+import { message } from '../containers/Messaging';
 
 const tasks = {
   signUpUser: args => {
@@ -30,6 +31,7 @@ const tasks = {
       .updateUser(args)
       .then(user => {
         actions.user.setLoggedInUser(user.data.updateUser);
+        message('Profile saved.', 'info');
       })
       .catch(err => errorHandling(err));
   },

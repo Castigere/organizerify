@@ -56,9 +56,9 @@ export default {
          * If one or more strings are empty, user will be set to status incomplete.
          */
         args.status = 'active';
-        [args.firstName, args.MiddleName, args.lastName, args.email, args.mobileNumber].map(
+        [args.firstName, args.middleName, args.lastName, args.email, args.mobileNumber].map(
           item => {
-            if (item < 1) args.status = 'incomplete';
+            if (item.length < 1) args.status = 'incomplete';
           }
         );
         return models.UserMongoSchema.findByIdAndUpdate(id, args, mongoUpdateOptions);
