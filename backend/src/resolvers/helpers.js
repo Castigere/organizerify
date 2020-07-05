@@ -40,7 +40,7 @@ const createUserInDb = async (args, UserMongoSchema) => {
   const { email, password, mobileNumber, firstName, middleName, lastName, role } = args;
   try {
     const document = await UserMongoSchema.findOne({ email });
-    if (document) return new Error('User already exists');
+    if (document) throw new Error('User already exists');
     const newUser = new UserMongoSchema({
       email: email || '',
       mobileNumber: mobileNumber || '',
@@ -57,7 +57,7 @@ const createUserInDb = async (args, UserMongoSchema) => {
     await newUser.save();
     return newUser;
   } catch (err) {
-    return new Error(err);
+    throw err;
   }
 };
 

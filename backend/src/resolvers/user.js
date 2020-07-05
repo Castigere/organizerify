@@ -82,10 +82,16 @@ export default {
       }
     },
 
-    signUpUser: (_parent, args, { models: { UserMongoSchema }, req }) =>
-      createUserInDb(args, UserMongoSchema).then(newUser => {
-        createUserSession(newUser, req);
-        return newUser;
-      })
+    signUpUser: async (_parent, args, { models: { UserMongoSchema }, req }) => {
+      try {
+        const newUser = await createUserInDb(args, UserMongoSchema);
+        if (newUser) {
+          await createUserSession(newUser, req);
+          return newUser;
+        }
+      } catch (err) {
+        return err;
+      }
+    }
   }
 };
