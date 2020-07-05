@@ -1,5 +1,6 @@
 import { combineResolvers } from 'graphql-resolvers';
 import { isAuthenticated, isAdmin, isCurrentUserOrAdmin } from './authorization';
+import { createUserInDb, createUserSession } from './helpers';
 
 export default {
   Query: {
@@ -26,25 +27,7 @@ export default {
     createUser: combineResolvers(
       isAuthenticated,
       isAdmin,
-      async (_parent, { password, email, ...args }, { models }) => {
-        try {
-          const document = await models.UserMongoSchema.findOne({ email });
-          if (document) return new Error('User already exists');
-          const newUser = new models.UserMongoSchema({
-            ...args,
-            email,
-            displayName: args.firstName,
-            status: 'incomplete',
-            language: 'en',
-            type: 'local'
-          });
-          newUser.password = newUser.generateHash(password);
-          await newUser.save();
-          return newUser;
-        } catch (err) {
-          return new Error(err);
-        }
-      }
+      async (_parent, args, { models: UserMongoSchema }) => createUserInDb(args, UserMongoSchema)
     ),
 
     updateUser: combineResolvers(
@@ -99,26 +82,10 @@ export default {
       }
     },
 
-    signUpUser: async (_parent, { password, email }, { models, req }) => {
-      try {
-        const document = await models.UserMongoSchema.findOne({ email });
-        if (document) return new Error('User already exists');
-        const newUser = new models.UserMongoSchema({
-          email,
-          firstName: 'New',
-          lastName: 'User',
-          status: 'incomplete',
-          language: 'en',
-          type: 'local',
-          role: 'member'
-        });
-        newUser.password = newUser.generateHash(password);
-        await newUser.save();
-        await req.login(newUser, err => err);
+    signUpUser: (_parent, args, { models: { UserMongoSchema }, req }) =>
+      createUserInDb(args, UserMongoSchema).then(newUser => {
+        createUserSession(newUser, req);
         return newUser;
-      } catch (err) {
-        return new Error(err);
-      }
-    }
+      })
   }
 };

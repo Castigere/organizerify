@@ -13,7 +13,7 @@ export const fromCursorHash = string => Buffer.from(string, 'base64').toString('
  * @param {Object} models
  */
 
-export const queryCollectionWithPagination = async (
+const queryCollectionWithPagination = async (
   { cursor, id, limit = QUERY_LIMIT },
   { models },
   collection
@@ -35,3 +35,32 @@ export const queryCollectionWithPagination = async (
     }
   };
 };
+
+const createUserInDb = async (args, UserMongoSchema) => {
+  const { email, password, mobileNumber, firstName, middleName, lastName, role } = args;
+  try {
+    const document = await UserMongoSchema.findOne({ email });
+    if (document) return new Error('User already exists');
+    const newUser = new UserMongoSchema({
+      email: email || '',
+      mobileNumber: mobileNumber || '',
+      firstName: firstName || '',
+      middleName: middleName || '',
+      lastName: lastName || '',
+      displayName: firstName || '',
+      status: 'incomplete',
+      language: 'en',
+      type: 'local',
+      role: role || 'member'
+    });
+    newUser.password = newUser.generateHash(password);
+    await newUser.save();
+    return newUser;
+  } catch (err) {
+    return new Error(err);
+  }
+};
+
+const createUserSession = (newUser, req) => req.login(newUser, err => err);
+
+export { queryCollectionWithPagination, createUserInDb, createUserSession };
