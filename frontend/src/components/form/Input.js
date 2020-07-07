@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const InputStyle = styled.input`
   font-size: 1em;
   width: 70%;
   height: 2em;
-  margin: 20px;
+  margin: 1em;
+  margin-bottom: 1.3em;
   border: 0;
   border: 1px solid #cccc;
   float: right;
@@ -13,13 +14,27 @@ const InputStyle = styled.input`
   &:focus {
     border: 1px solid #2c3e50;
   }
+  
+  /* ${({ isValid }) => {
+    if (isValid === 'undefined') return null;
+
+    if (isValid === false)
+      return css`
+        background: red;
+      `;
+
+    if (isValid === true)
+      return css`
+        background: inherit;
+      `;
+  }} */
   @media only screen and (max-width: 57em) {
     width: 100%;
     margin: 0;
     margin-left: 0;
     margin-right: 0;
     margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 1.1em;
   }
 `;
 
@@ -37,11 +52,24 @@ const Label = styled.label`
   }
 `;
 
-const Input = ({ children, label, ...props }) => {
+const Error = styled.div`
+  color: darkred;
+  float: right;
+  margin-top: -1.3em;
+  @media only screen and (max-width: 57em) {
+    margin-top: -1.2em;
+  }
+`;
+
+const Input = ({ children, label, error, ...props }) => {
+  console.log('ERROR i input', error);
   return (
-    <Label>
-      {label}:<InputStyle {...props}>{children}</InputStyle>
-    </Label>
+    <>
+      <Label>
+        {label}:<InputStyle {...props}>{children}</InputStyle>
+      </Label>
+      <Error>{error}</Error>
+    </>
   );
 };
 

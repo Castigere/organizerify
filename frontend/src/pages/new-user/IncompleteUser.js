@@ -4,6 +4,8 @@ import { Formik } from 'formik';
 
 import withContext from 'context';
 import { user } from 'tasks';
+import { useFormValidation } from './forms';
+import validation from './validation-schema';
 
 import { TextBox, Input, Form, Fieldset } from 'components/form';
 import { H1 } from 'components/typography';
@@ -12,9 +14,45 @@ import { Button } from 'components/buttons';
 const IncompleteUser = ({
   currentUser: { firstName, middleName, lastName, email, mobileNumber, id }
 }) => {
+  const { values, errors, handleBlur, handleChange } = useFormValidation(
+    { firstName: '', middleName: '', email: '' },
+    validation
+  );
+  console.log('Trigger setError?', errors);
   return (
     <TextBox>
       <H1>Incomplete registration</H1>
+      <Form>
+        <Fieldset legend="Personal information">
+          <Input
+            label="First name"
+            type="text"
+            name="firstName"
+            value={values.firstName}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            error={errors.firstName}
+          />
+          <Input
+            label="Middle Name"
+            type="text"
+            name="middleName"
+            value={values.middleName}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            errors={errors.middleName}
+          />
+          <Input
+            label="Email address"
+            type="text"
+            name="email"
+            value={values.email}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            errors={errors.email}
+          />
+        </Fieldset>
+      </Form>
       <Formik
         initialValues={{ firstName, middleName, lastName, email, mobileNumber }}
         onSubmit={(values, _actions) => user.updateCurrentUser({ ...values, id })}

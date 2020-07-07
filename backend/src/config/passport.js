@@ -15,6 +15,7 @@ module.exports = passport => {
    * (DE) SERIALIZE USER
    */
   passport.serializeUser((user, done) => {
+    console.log('serialize', user);
     done(null, user);
   });
 
@@ -80,11 +81,16 @@ module.exports = passport => {
       },
       function(token, refreshToken, profile, done) {
         process.nextTick(() => {
+          console.log('1');
           UserMongoSchema.findOne({ 'google.id': profile.id }, (err, user) => {
+            console.log('2');
             if (err) return done(err);
-            if ((user && user.status === 'active') || 'incomplete') {
+
+            if ((user && user.status === 'active') || (user && user.status === 'incomplete')) {
+              console.log('exists', user);
               return done(null, user);
             } else {
+              console.log('new');
               let newUser = new UserMongoSchema();
               newUser.role = 'administrator';
               newUser.google.id = profile.id;

@@ -75,7 +75,7 @@ export default {
     logoutUser: async (_parent, _args, { req }) => {
       try {
         await req.logout();
-        req.session.destroy(function(err) {});
+        req.session.destroy(err => err);
         return true;
       } catch (err) {
         return err;
