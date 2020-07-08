@@ -62,7 +62,6 @@ const Error = styled.div`
 `;
 
 const Input = ({ children, label, error, ...props }) => {
-  console.log('ERROR i input', error);
   return (
     <>
       <Label>

@@ -15,10 +15,12 @@ const IncompleteUser = ({
   currentUser: { firstName, middleName, lastName, email, mobileNumber, id }
 }) => {
   const { values, errors, handleBlur, handleChange } = useFormValidation(
-    { firstName: '', middleName: '', email: '' },
+    { firstName, middleName, email },
     validation
   );
-  console.log('Trigger setError?', errors);
+  console.log('Errors', errors);
+  console.log('Values', values);
+
   return (
     <TextBox>
       <H1>Incomplete registration</H1>
@@ -40,7 +42,7 @@ const IncompleteUser = ({
             value={values.middleName}
             onBlur={handleBlur}
             onChange={handleChange}
-            errors={errors.middleName}
+            error={errors.middleName}
           />
           <Input
             label="Email address"
@@ -49,8 +51,11 @@ const IncompleteUser = ({
             value={values.email}
             onBlur={handleBlur}
             onChange={handleChange}
-            errors={errors.email}
+            error={errors.email}
           />
+          <Button right type="submit">
+            Submit
+          </Button>
         </Fieldset>
       </Form>
       <Formik

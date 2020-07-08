@@ -2,6 +2,7 @@ import getCurrentUser from './getCurrentUser';
 import getUserById from './getUserById';
 import getUserAccountType from './getUserAccountType';
 import getSessionStatus from './getSessionStatus';
+import getEmailAvailability from './getEmailAvailability';
 
 import { apolloClient } from '../apolloClient';
 
@@ -9,7 +10,8 @@ const queryList = {
   getCurrentUser,
   getUserById,
   getUserAccountType,
-  getSessionStatus
+  getSessionStatus,
+  getEmailAvailability
 };
 
 const queryCreator = items => {

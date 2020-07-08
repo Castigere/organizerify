@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 const getUserAccountType = gql`
-  query User($email: String!) {
+  query Account($email: String!) {
     getUserAccountType(email: $email) {
       type
       exists

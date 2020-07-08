@@ -51,9 +51,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(morgan('combined'));
+// app.use(morgan('combined'));
 
 app.use('/', router);
+
+apolloServer.applyMiddleware({ app, cors: false, path: '/graphql' });
 
 app.use(express.static(`${__dirname}/build`));
 
@@ -61,7 +63,7 @@ app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname, '/build/index.html'));
 });
 
-apolloServer.applyMiddleware({ app, cors: false, path: '/graphql' });
+// apolloServer.applyMiddleware({ app, cors: false, path: '/graphql' });
 
 const httpServer = http.createServer(app);
 apolloServer.installSubscriptionHandlers(httpServer);

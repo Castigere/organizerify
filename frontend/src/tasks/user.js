@@ -84,6 +84,14 @@ const tasks = {
         return accountType.data.getUserAccountType;
       })
       .catch(err => errorHandling(err));
+  },
+  getEmailAvailability: args => {
+    return queries
+      .getEmailAvailability(args)
+      .then(emailAvailability => {
+        return emailAvailability.data.getEmailAvailability;
+      })
+      .catch(err => errorHandling(err));
   }
 };
 

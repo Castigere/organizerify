@@ -1,3 +1,7 @@
+import { combineResolvers } from 'graphql-resolvers';
+
+import { isAuthenticated } from './authorization';
+
 export default {
   Query: {
     getUserAccountType: async (_parent, { email }, { models }) => {
@@ -6,10 +10,40 @@ export default {
         return {
           email,
           type: document.type,
-          exists: true
+          exists: true,
+          available: false
         };
       }
       return { email, exists: false };
-    }
+    },
+    getEmailAvailability: combineResolvers(
+      isAuthenticated,
+      (_parent, { email }, { models, currentUser }) =>
+        models.UserMongoSchema.findOne({ email })
+          .then(document => {
+            if (document && document._id.equals(currentUser._id)) {
+              return {
+                email,
+                exists: true,
+                available: true
+              };
+            }
+            if (document && !document._id.equals(currentUser._id)) {
+              return {
+                email,
+                exists: true,
+                available: false
+              };
+            }
+            return {
+              email,
+              exists: false,
+              available: true
+            };
+          })
+          .catch(err => {
+            return err;
+          })
+    )
   }
 };
