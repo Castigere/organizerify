@@ -13,6 +13,12 @@ const validation = {
   middleName: yup.object().shape({
     middleName: yup.string().max(64, 'Middle name too long')
   }),
+  lastName: yup.object().shape({
+    lastName: yup.string().max(64, 'Last name too long')
+  }),
+  mobileNumber: yup.object().shape({
+    mobileNumber: yup.string().max(64, 'Last name too long')
+  }),
   email: yup.object().shape({
     email: yup
       .string()

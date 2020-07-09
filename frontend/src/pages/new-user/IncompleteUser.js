@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik } from 'formik';
 
 import withContext from 'context';
 import { user } from 'tasks';
@@ -15,16 +14,19 @@ const IncompleteUser = ({
   currentUser: { firstName, middleName, lastName, email, mobileNumber, id }
 }) => {
   const { values, errors, handleBlur, handleChange } = useFormValidation(
-    { firstName, middleName, email },
+    { firstName, middleName, lastName, mobileNumber, email },
     validation
   );
-  console.log('Errors', errors);
-  console.log('Values', values);
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    user.updateCurrentUser({ ...values, id });
+  };
 
   return (
     <TextBox>
       <H1>Incomplete registration</H1>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Fieldset legend="Personal information">
           <Input
             label="First name"
@@ -36,13 +38,31 @@ const IncompleteUser = ({
             error={errors.firstName}
           />
           <Input
-            label="Middle Name"
+            label="Middle name"
             type="text"
             name="middleName"
             value={values.middleName}
             onBlur={handleBlur}
             onChange={handleChange}
             error={errors.middleName}
+          />
+          <Input
+            label="Last name"
+            type="text"
+            name="lastName"
+            value={values.lastName}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            error={errors.lastName}
+          />
+          <Input
+            label="Mobile number"
+            type="text"
+            name="mobileNumber"
+            value={values.mobileNumber}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            error={errors.mobileNumber}
           />
           <Input
             label="Email address"
@@ -58,62 +78,6 @@ const IncompleteUser = ({
           </Button>
         </Fieldset>
       </Form>
-      <Formik
-        initialValues={{ firstName, middleName, lastName, email, mobileNumber }}
-        onSubmit={(values, _actions) => user.updateCurrentUser({ ...values, id })}
-      >
-        {props => {
-          return (
-            <Form onSubmit={props.handleSubmit}>
-              <Fieldset legend="Personal information">
-                <Input
-                  label="First name"
-                  type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  value={props.values.firstName}
-                  name="firstName"
-                />
-                <Input
-                  label="Middle Name"
-                  type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  value={props.values.middleName}
-                  name="middleName"
-                />
-                <Input
-                  label="Last name"
-                  type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  value={props.values.lastName}
-                  name="lastName"
-                />
-                <Input
-                  label="Email address"
-                  type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  value={props.values.email}
-                  name="email"
-                />
-                <Input
-                  label="Mobile number"
-                  type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  value={props.values.mobileNumber}
-                  name="mobileNumber"
-                />
-                <Button right type="submit">
-                  Submit
-                </Button>
-              </Fieldset>
-            </Form>
-          );
-        }}
-      </Formik>
     </TextBox>
   );
 };
