@@ -6,10 +6,15 @@ export default gql`
     getEmailAvailability(email: String!): Account!
   }
 
+  extend type Mutation {
+    setNewAccountPassword(id: ID!, currentPassword: String!, newPassword: String!): Account!
+  }
+
   type Account {
     email: String!
     exists: Boolean!
     available: Boolean!
     type: String
+    isPasswordReset: Boolean
   }
 `;

@@ -1,6 +1,7 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Button = styled.button`
+const StyledButton = styled.button`
   border: 1px solid black;
   background: inherit;
   height: 2.5em;
@@ -21,6 +22,11 @@ const Button = styled.button`
     border-radius: 2px;
   }
 
+  &:disabled {
+    pointer-events: none;
+    border: 1px solid lightgrey;
+  }
+
   @media only screen and (max-width: 57em) {
     height: 3em;
   }
@@ -31,5 +37,14 @@ const Button = styled.button`
       float: right;
     `}
 `;
+
+const Button = ({ children, disabled, ...props }) =>
+  disabled ? (
+    <StyledButton disabled {...props}>
+      {children}
+    </StyledButton>
+  ) : (
+    <StyledButton {...props}>{children}</StyledButton>
+  );
 
 export default Button;

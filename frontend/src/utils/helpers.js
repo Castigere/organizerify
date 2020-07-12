@@ -4,4 +4,6 @@ const doThenSetState = async (operation, args, setter) => {
   setter(result);
 };
 
-export { doThenSetState };
+const trimWhitespaces = string => string.replace(/ /g, '');
+
+export { doThenSetState, trimWhitespaces };

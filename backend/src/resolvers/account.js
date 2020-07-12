@@ -45,5 +45,13 @@ export default {
             return err;
           })
     )
+  },
+  Mutation: {
+    setNewAccountPassword: combineResolvers(
+      isAuthenticated,
+      async (_parent, { id, currentPassword, newPassword }, { models }) => {
+        const document = await models.UserMongoSchema.findById(id);
+      }
+    )
   }
 };

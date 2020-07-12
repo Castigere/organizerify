@@ -1,18 +1,16 @@
 import { useState } from 'react';
 
-const trimWhitespaces = string => string.replace(/ /g, '');
-
 const useFormValidation = (initialValues, validationSchema) => {
   const [values, setValue] = useState(initialValues);
   const [errors, setError] = useState({});
+  const [isValid, setValidity] = useState(false);
 
-  const handleChange = ({ target: { name, value } }) =>
-    setValue({ ...values, [name]: trimWhitespaces(value) });
+  const handleChange = ({ target: { name, value } }) => setValue({ ...values, [name]: value });
 
   const handleBlur = ({ target: { name } }) => {
-    validationSchema[name] &&
-      validationSchema[name]
-        .validate(values)
+    validationSchema &&
+      validationSchema
+        .validateAt(name, values)
         .then(() => {
           delete errors[name];
           setError({ ...errors });
@@ -22,7 +20,12 @@ const useFormValidation = (initialValues, validationSchema) => {
         });
   };
 
-  return { values, errors, handleChange, handleBlur };
+  validationSchema &&
+    validationSchema
+      .isValid(values)
+      .then(valid => (valid ? setValidity(true) : setValidity(false)));
+
+  return { isValid, values, errors, handleChange, handleBlur };
 };
 
 export { useFormValidation };
