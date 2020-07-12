@@ -14,20 +14,6 @@ const InputStyle = styled.input`
   &:focus {
     border: 1px solid #2c3e50;
   }
-  
-  /* ${({ isValid }) => {
-    if (isValid === 'undefined') return null;
-
-    if (isValid === false)
-      return css`
-        background: red;
-      `;
-
-    if (isValid === true)
-      return css`
-        background: inherit;
-      `;
-  }} */
   @media only screen and (max-width: 57em) {
     width: 100%;
     margin: 0;
@@ -56,12 +42,16 @@ const Label = styled.label`
           @media only screen and (max-width: 57em) {
             border-left: 2px solid #c81c1c;
             box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            border-left: 0 solid white;
           }
         `
       : null}
   @media only screen and (max-width: 57em) {
+    margin-top: 0.5em;
+    margin-bottom: 0;
     float: node;
     line-height: 0;
+    border-left: 0 solid white;
   }
 `;
 
