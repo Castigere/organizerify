@@ -28,6 +28,7 @@ const StyledButton = styled.button`
   }
 
   @media only screen and (max-width: 57em) {
+    float: right;
     height: 3em;
   }
 

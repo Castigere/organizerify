@@ -39,13 +39,26 @@ const InputStyle = styled.input`
 `;
 
 const Label = styled.label`
-  /* font-weight: bold; */
-  width: 100%;
+  width: 94%;
   background: inherit;
   float: left;
+  border-left: 2px solid lightgrey;
+  padding-left: 3%;
   margin-left: 2%;
-  margin-top: 1%;
   line-height: 3.6em;
+  ${({ error }) =>
+    error
+      ? css`
+          border-left: 3px solid #c81c1c;
+          box-shadow: 0 0 1px rgba(10, 0, 0, 0.3);
+          transition: box-shadow 0.3s ease-in;
+          transition: border-left 0.3s ease-in;
+          @media only screen and (max-width: 57em) {
+            border-left: 2px solid #c81c1c;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+          }
+        `
+      : null}
   @media only screen and (max-width: 57em) {
     float: node;
     line-height: 0;
@@ -53,18 +66,20 @@ const Label = styled.label`
 `;
 
 const Error = styled.div`
-  color: darkred;
+  color: #2c3e50;
   float: right;
+  margin-right: 3%;
   margin-top: -1.3em;
   @media only screen and (max-width: 57em) {
-    margin-top: -1.2em;
+    color: #2c3e50;
+    margin-top: -1.3em;
   }
 `;
 
 const Input = ({ children, label, error, ...props }) => {
   return (
     <>
-      <Label>
+      <Label error={error}>
         {label}:<InputStyle {...props}>{children}</InputStyle>
       </Label>
       <Error>{error}</Error>

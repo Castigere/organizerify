@@ -5,6 +5,7 @@ const FieldsetStyle = styled.fieldset`
   margin: 10px;
   border: 0;
   border-bottom: 1px solid #cccc;
+  padding-bottom: 1.3em;
   @media only screen and (max-width: 57em) {
     margin: 0;
     margin-top: 1.5em;
