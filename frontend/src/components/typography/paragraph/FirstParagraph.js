@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const FirstParagraph = styled.p`
   &::first-letter {
-    color: #2c3e50;
+    color: ${props => props.theme.accent};
     font-size: 5em;
     font-family: Georgia, serif;
     float: left;

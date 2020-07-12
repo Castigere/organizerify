@@ -11,8 +11,9 @@ const BlockQuote = styled.blockquote`
   &::before {
     content: open-quote;
     position: absolute;
+    color: ${props => props.theme.accent};
     top: -10px;
-    left: 0;
+    left: -0.3em;
     font-family: Arial, sans-serif;
     font-size: 82px;
     font-style: normal;
@@ -20,6 +21,7 @@ const BlockQuote = styled.blockquote`
   &::after {
     content: close-quote;
     position: absolute;
+    color: ${props => props.theme.accent};
     bottom: -60px;
     font-family: Arial, sans-serif;
     font-size: 82px;

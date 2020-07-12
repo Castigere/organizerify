@@ -14,7 +14,9 @@ const StyledButton = styled.button`
 
   &:hover {
     color: white;
-    background: black;
+    background: ${props => props.theme.accent};
+
+    /* background: black; */
   }
 
   &:focus {

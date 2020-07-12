@@ -19,7 +19,6 @@ const Legend = styled.legend`
   margin-left: 0;
   &::first-letter {
     font-size: 1.1em;
-    color: #2c3e50;
   }
 `;
 
