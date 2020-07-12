@@ -30,7 +30,7 @@ const passwordValidation = yup.object().shape({
   currentPassword: yup.string().required('This field is required'),
   newPassword: yup
     .string()
-    .min(8, 'Password needs to be at least eight characters long')
+    // .min(8, 'Password needs to be at least eight characters long')
     .max(64, 'Password is too long')
     .required('This field is required'),
   confirmedPassword: yup.string().when('newPassword', {

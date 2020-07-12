@@ -47,10 +47,16 @@ export default {
     )
   },
   Mutation: {
-    setNewAccountPassword: combineResolvers(
+    setNewUserPassword: combineResolvers(
       isAuthenticated,
       async (_parent, { id, currentPassword, newPassword }, { models }) => {
         const document = await models.UserMongoSchema.findById(id);
+        if (document && document.validPassword(currentPassword)) {
+          document.password = document.generateHash(newPassword);
+          await document.save();
+          return { isPasswordSet: true };
+        }
+        return { isPasswordSet: false };
       }
     )
   }

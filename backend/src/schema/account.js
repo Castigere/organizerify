@@ -7,7 +7,7 @@ export default gql`
   }
 
   extend type Mutation {
-    setNewAccountPassword(id: ID!, currentPassword: String!, newPassword: String!): Account!
+    setNewUserPassword(id: ID!, currentPassword: String!, newPassword: String!): Account!
   }
 
   type Account {
@@ -15,6 +15,6 @@ export default gql`
     exists: Boolean!
     available: Boolean!
     type: String
-    isPasswordReset: Boolean
+    isPasswordSet: Boolean
   }
 `;

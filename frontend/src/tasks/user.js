@@ -92,6 +92,17 @@ const tasks = {
         return emailAvailability.data.getEmailAvailability;
       })
       .catch(err => errorHandling(err));
+  },
+  setNewUserPassword: args => {
+    return mutations
+      .setNewUserPassword(args)
+      .then(isPasswordSet => {
+        isPasswordSet.data.setNewUserPassword.isPasswordSet
+          ? message('New password saved', 'info')
+          : message('Unable to save new password', 'warn');
+        return isPasswordSet.data.setNewUserPassword;
+      })
+      .catch(err => errorHandling(err));
   }
 };
 

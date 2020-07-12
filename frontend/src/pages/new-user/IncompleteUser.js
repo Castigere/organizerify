@@ -86,8 +86,19 @@ const IncompleteUser = ({
       passwordValidation
     );
 
+    const handleSubmit = event => {
+      event.preventDefault();
+      console.log('currentPassword:', values.currentPassword);
+      console.log('newPassword', values.newPassword);
+      user.setNewUserPassword({
+        currentPassword: values.currentPassword,
+        newPassword: values.newPassword,
+        id
+      });
+    };
+
     return (
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Fieldset legend="Change password">
           <Input
             label="Current password"
