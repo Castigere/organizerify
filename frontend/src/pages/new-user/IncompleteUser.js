@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import withContext from 'context';
 import { user } from 'tasks';
-import { useFormValidation } from './forms';
+import { useFormValidation } from 'utils';
 import { personalInformationValidation, passwordValidation } from './validation-schema';
 
 import { TextBox, Input, Form, Fieldset } from 'components/form';

@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
-import PrivateRoute from 'utils/PrivateRoute';
+import { PrivateRoute } from 'utils';
 
-import { Front, Main, Register, Users, NewUser, NotFound, IncompleteUser } from 'pages';
+import { Front, Main, Register, Users, NewUser, NotFound, IncompleteUser, Login } from 'pages';
 
 const Routes = ({ isUserAuthenticated }) => {
   return (
     <Switch>
       <Route path="/register" component={Register} />
+      <Route path="/login" component={Login} />
       <PrivateRoute
         exact
         path="/incompleteuser"
@@ -43,7 +44,7 @@ const Routes = ({ isUserAuthenticated }) => {
         path="/"
         component={Main}
         isUserAuthenticated={isUserAuthenticated}
-        redirect="/register"
+        redirect="/login"
       />
       <PrivateRoute
         path="*"

@@ -5,5 +5,6 @@ import Users from './users/Users';
 import NewUser from './new-user/NewUser';
 import NotFound from './not-found/NotFound';
 import IncompleteUser from './new-user/IncompleteUser';
+import Login from './login/Login';
 
-export { Front, Main, Register, Users, NewUser, NotFound, IncompleteUser };
+export { Front, Main, Register, Users, NewUser, NotFound, IncompleteUser, Login };

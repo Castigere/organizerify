@@ -66,11 +66,14 @@ const Error = styled.div`
   }
 `;
 
-const Input = ({ children, label, error, ...props }) => {
+const Input = ({ children, label, error, focus, ...props }) => {
   return (
     <>
       <Label error={error}>
-        {label}:<InputStyle {...props}>{children}</InputStyle>
+        {label}:
+        <InputStyle ref={focus} {...props}>
+          {children}
+        </InputStyle>
       </Label>
       <Error>{error}</Error>
     </>
