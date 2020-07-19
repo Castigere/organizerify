@@ -1,13 +1,16 @@
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useEffect, useReducer, useRef } from 'react';
 
 const ADD_ERROR = 'ADD_ERROR';
 const REMOVE_ERROR = 'REMOVE_ERROR';
 
-const useFormValidation = (initialValues, validationSchema) => {
+const useFormValidation = (initialValues, validationSchema, delay = 300) => {
   const [isInitialValidationDone, setInitialValidationDone] = useState(false);
   const [values, setValue] = useState(initialValues);
   const [isValid, setValidity] = useState(false);
   const [currentField, setCurrentField] = useState();
+
+  const timeoutId = useRef();
+
   const [errors, dispatchError] = useReducer((errors, action) => {
     switch (action.type) {
       case ADD_ERROR: {
@@ -37,18 +40,24 @@ const useFormValidation = (initialValues, validationSchema) => {
    * - validationSchema has a field matching currentField
    */
   useEffect(() => {
-    Object.keys(values).includes(currentField) &&
+    if (
+      Object.keys(values).includes(currentField) &&
       validationSchema &&
-      validationSchema.fields[currentField] &&
-      validationSchema
-        .validateAt(currentField, values)
-        .then(() => {
-          dispatchError({ type: REMOVE_ERROR });
-        })
-        .catch(error => {
-          dispatchError({ type: ADD_ERROR, error, currentField });
-        });
-  }, [values, validationSchema, currentField]);
+      validationSchema.fields[currentField]
+    ) {
+      clearTimeout(timeoutId.current);
+      timeoutId.current = setTimeout(() => {
+        validationSchema
+          .validateAt(currentField, values)
+          .then(() => {
+            dispatchError({ type: REMOVE_ERROR });
+          })
+          .catch(error => {
+            dispatchError({ type: ADD_ERROR, error, currentField });
+          });
+      }, delay);
+    }
+  }, [values, validationSchema, currentField, delay]);
 
   !isInitialValidationDone &&
     validationSchema &&
