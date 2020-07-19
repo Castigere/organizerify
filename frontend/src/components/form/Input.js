@@ -14,6 +14,14 @@ const InputStyle = styled.input`
   &:focus {
     border: 1px solid #2c3e50;
   }
+
+  ${({ required }) =>
+    required &&
+    css`
+      border: 1px solid #cccc;
+      box-shadow: none;
+    `}
+
   @media only screen and (max-width: 57em) {
     width: 100%;
     margin: 0;
@@ -33,19 +41,18 @@ const Label = styled.label`
   margin-left: 2%;
   line-height: 3.6em;
   ${({ error }) =>
-    error
-      ? css`
-          border-left: 3px solid #c81c1c;
-          box-shadow: 0 0 1px rgba(10, 0, 0, 0.3);
-          transition: box-shadow 0.3s ease-in;
-          transition: border-left 0.3s ease-in;
-          @media only screen and (max-width: 57em) {
-            border-left: 2px solid #c81c1c;
-            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-            border-left: 0 solid white;
-          }
-        `
-      : null}
+    error &&
+    css`
+      border-left: 3px solid #c81c1c;
+      box-shadow: 0 0 1px rgba(10, 0, 0, 0.3);
+      transition: box-shadow 0.3s ease-in;
+      transition: border-left 0.3s ease-in;
+      @media only screen and (max-width: 57em) {
+        border-left: 2px solid #c81c1c;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        border-left: 0 solid white;
+      }
+    `}
   @media only screen and (max-width: 57em) {
     margin-top: 0.5em;
     margin-bottom: 0;
@@ -66,12 +73,12 @@ const Error = styled.div`
   }
 `;
 
-const Input = ({ children, label, error, focus, ...props }) => {
+const Input = ({ children, label, error, focus, required, ...props }) => {
   return (
     <>
       <Label error={error}>
         {label}:
-        <InputStyle ref={focus} {...props}>
+        <InputStyle ref={focus} required={required} {...props}>
           {children}
         </InputStyle>
       </Label>

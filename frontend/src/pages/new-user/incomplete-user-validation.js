@@ -17,13 +17,13 @@ const personalInformationValidation = yup.object().shape({
   email: yup
     .string()
     .email('Not an email address')
-    .test('Valid email address', 'Not a valid email address', value =>
-      REGEXP_EMAIL.test(value)
+    .test('Valid email address', 'Not a valid email address', value => {
+      return REGEXP_EMAIL.test(value)
         ? user.getEmailAvailability({ email: value }).then(email => email.available)
         : value
         ? false
-        : false
-    )
+        : false;
+    })
 });
 
 const passwordValidation = yup.object().shape({
