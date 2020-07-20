@@ -15,7 +15,7 @@ ReactDOM.render(
   <Router>
     <StoreProvider>
       <div>
-        <ThemeProvider theme={{ accent: '#1D262D', headercolor: '#2c3e50' }}>
+        <ThemeProvider theme={{ accent: '#4e9ce5', headercolor: '#2c3e50' }}>
           <App />
         </ThemeProvider>
         <Messaging />

@@ -45,8 +45,8 @@ const Chevron = styled.div`
   float: right;
   position: relative;
   padding: 0;
-  height: 1em;
-  width: 1px;
+  height: 1.1em;
+  width: 2px;
   margin-left: 0;
   margin-top: 0;
   transform: rotate(270deg);
@@ -59,7 +59,7 @@ const Chevron = styled.div`
     left: 0;
     height: 50%;
     width: 100%;
-    background: black;
+    background: ${props => props.theme.accent};
     transform: skew(40deg, 0deg);
   }
   &::after {
@@ -69,14 +69,14 @@ const Chevron = styled.div`
     right: 0;
     height: 50%;
     width: 100%;
-    background: black;
+    background: ${props => props.theme.accent};
     transform: skew(-40deg, 0deg);
   }
   ${({ open }) =>
     open &&
     css`
       transform: rotate(90deg);
-      transition: all 0.1s ease-in;
+      transition: all 0.1s ease;
     `}
 `;
 
