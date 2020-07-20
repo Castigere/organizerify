@@ -3,7 +3,7 @@ import { useState, useEffect, useReducer, useRef } from 'react';
 const ADD_ERROR = 'ADD_ERROR';
 const REMOVE_ERROR = 'REMOVE_ERROR';
 
-const useFormValidation = (initialValues, validationSchema, delay = 300) => {
+const useFormValidation = (initialValues, validationSchema = {}, delay = 300) => {
   const [isInitialValidationDone, setInitialValidationDone] = useState(false);
   const [values, setValue] = useState(initialValues);
   const [isValid, setValidity] = useState(false);
@@ -62,7 +62,7 @@ const useFormValidation = (initialValues, validationSchema, delay = 300) => {
   !isInitialValidationDone &&
     validationSchema &&
     validationSchema.isValid(values).then(valid => {
-      valid ? setValidity(true) : setValidity(false);
+      setValidity(valid ? true : false);
       setInitialValidationDone(true);
     });
 

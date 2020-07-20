@@ -17,7 +17,7 @@ const personalInformationValidation = yup.object().shape({
   email: yup
     .string()
     .email('Not an email address')
-    .test('Valid email address', 'Not a valid email address', value => {
+    .test('Email address available', 'Email address not available', value => {
       return REGEXP_EMAIL.test(value)
         ? user.getEmailAvailability({ email: value }).then(email => email.available)
         : value

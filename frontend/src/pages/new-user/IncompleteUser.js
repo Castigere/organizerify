@@ -23,10 +23,9 @@ const IncompleteUser = ({
       event.preventDefault();
       user.updateCurrentUser({ ...values, id });
     };
-
     return (
       <Form onSubmit={handleSubmit}>
-        <Fieldset legend="Personal information">
+        <Fieldset closed legend="Personal information">
           <Input
             label="First name"
             type="text"
