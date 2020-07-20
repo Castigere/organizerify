@@ -91,7 +91,7 @@ const Fieldset = ({ children, legend, closed }) => {
     <FieldsetStyle open={!isCollapsed}>
       <Legend open={!isCollapsed} onClick={handleClick}>
         <LegendText>{legend}</LegendText>
-        <Chevron open={!isCollapsed} className="arrow" />
+        {legend && <Chevron open={!isCollapsed} />}
       </Legend>
       <Collapsible open={!isCollapsed} transitionTime={120}>
         {children}
