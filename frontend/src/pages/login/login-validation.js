@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 import { user } from 'tasks';
 
-import { REGEXP_EMAIL } from 'config';
+import { REGEXP_EMAIL } from 'utils';
 
 const loginValidation = yup.object().shape({
   email: yup

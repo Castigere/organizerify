@@ -11,6 +11,7 @@ const FieldsetStyle = styled.fieldset`
     !open &&
     css`
       padding-bottom: 0.3em;
+      transition all 0.4s ease-in;
     `}
   @media only screen and (max-width: 57em) {
     margin: 0;
@@ -93,7 +94,7 @@ const Fieldset = ({ children, legend, closed }) => {
         <LegendText>{legend}</LegendText>
         {legend && <Chevron open={!isCollapsed} />}
       </Legend>
-      <Collapsible open={!isCollapsed} transitionTime={120}>
+      <Collapsible open={!isCollapsed} transitionTime={220}>
         {children}
       </Collapsible>
     </FieldsetStyle>
