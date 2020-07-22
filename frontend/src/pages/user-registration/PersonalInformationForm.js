@@ -37,7 +37,6 @@ const PersonalInformationForm = ({
           value={values.firstName}
           onChange={handleChange}
           error={errors.firstName}
-          required
         />
         <Input
           label="Middle name"
@@ -54,7 +53,6 @@ const PersonalInformationForm = ({
           value={values.lastName}
           onChange={handleChange}
           error={errors.lastName}
-          required
         />
         <Input
           label="Mobile number"
@@ -71,7 +69,6 @@ const PersonalInformationForm = ({
           value={values.email}
           onChange={handleChange}
           error={errors.email}
-          required
         />
         <Button right type="submit" disabled={!isValid}>
           Submit

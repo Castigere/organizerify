@@ -33,7 +33,6 @@ const PasswordChangeForm = ({ id, closed }) => {
           value={values.currentPassword}
           onChange={handleChange}
           error={errors.currentPassword}
-          required
         />
         <Input
           label="New password"
@@ -42,7 +41,6 @@ const PasswordChangeForm = ({ id, closed }) => {
           value={values.newPassword}
           onChange={handleChange}
           error={errors.newPassword}
-          required
         />
         <Input
           label="Confirm password"
@@ -51,7 +49,6 @@ const PasswordChangeForm = ({ id, closed }) => {
           value={values.confirmedPassword}
           onChange={handleChange}
           error={errors.confirmedPassword}
-          required
         />
         <Button right type="submit" disabled={!isValid}>
           Submit
