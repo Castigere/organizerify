@@ -18,14 +18,14 @@ const FieldsetStyle = styled.fieldset`
     margin-top: 1.5em;
 
     /* debug */
-    padding-bottom: 2em;
   }
 `;
 
 const Legend = styled.legend`
   width: 100%;
+  height: 1.5em;
   color: black;
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-family: Georgia, serif;
   margin-left: 0;
   cursor: pointer;
@@ -33,11 +33,7 @@ const Legend = styled.legend`
   &::first-letter {
     font-size: 1.1em;
   }
-  ${({ open }) =>
-    open &&
-    css`
-      /* background: red; */
-    `}
+  ${({ open }) => open && css``}
 `;
 
 const LegendText = styled.div`
