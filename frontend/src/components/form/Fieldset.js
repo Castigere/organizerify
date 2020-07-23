@@ -16,6 +16,8 @@ const FieldsetStyle = styled.fieldset`
   @media only screen and (max-width: 57em) {
     margin: 0;
     margin-top: 1.5em;
+
+    /* debug */
     padding-bottom: 2em;
   }
 `;
@@ -41,6 +43,9 @@ const Legend = styled.legend`
 const LegendText = styled.div`
   width: 80%;
   float: left;
+  @media only screen and (max-width: 57em) {
+    font-size: 4em;
+  }
 `;
 
 const Chevron = styled.div`
