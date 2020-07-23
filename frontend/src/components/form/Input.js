@@ -43,15 +43,14 @@ const Label = styled.label`
       @media only screen and (max-width: 57em) {
         border-left: 2px solid #c81c1c;
         box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        border-left: 0 solid white;
+        /* border-left: 0 solid white; */
       }
     `}
   @media only screen and (max-width: 57em) {
-    margin-top: 0.5em;
+    padding-top: 0.5em;
     margin-bottom: 0;
     float: node;
     line-height: 0;
-    border-left: 0 solid white;
   }
 `;
 

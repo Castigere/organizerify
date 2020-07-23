@@ -16,8 +16,6 @@ const FieldsetStyle = styled.fieldset`
   @media only screen and (max-width: 57em) {
     margin: 0;
     margin-top: 1.5em;
-
-    /* debug */
   }
 `;
 
@@ -40,7 +38,7 @@ const LegendText = styled.div`
   width: 80%;
   float: left;
   @media only screen and (max-width: 57em) {
-    font-size: 4em;
+    /* font-size: 4em; */
   }
 `;
 
