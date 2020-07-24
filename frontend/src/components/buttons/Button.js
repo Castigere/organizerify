@@ -15,8 +15,6 @@ const StyledButton = styled.button`
   &:hover {
     color: white;
     background: ${props => props.theme.accent};
-
-    /* background: black; */
   }
 
   &:focus {
@@ -31,7 +29,9 @@ const StyledButton = styled.button`
 
   @media only screen and (max-width: 57em) {
     float: right;
-    height: 3em;
+    height: 4em;
+    width: 50%;
+    font-size: 1em;
   }
 
   ${({ right }) =>
