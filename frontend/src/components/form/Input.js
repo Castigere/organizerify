@@ -42,12 +42,9 @@ const Label = styled.label`
     error &&
     css`
       border-left: 3px solid #c81c1c;
-      box-shadow: 0 0 1px rgba(10, 0, 0, 0.3);
-      transition: box-shadow 0.3s ease-in;
-      transition: border-left 0.3s ease-in;
+      transition: all 0.3s ease-in;
       @media only screen and (max-width: 57em) {
         border-left: 3px solid #c81c1c;
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
         border-left: 0 solid white;
       }
     `}

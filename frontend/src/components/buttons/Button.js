@@ -46,7 +46,7 @@ const StyledButton = styled.button`
 
 const Button = ({ disabled, tooltip, ...props }) =>
   tooltip && !disabled ? (
-    <Tooltip arrow text={tooltip}>
+    <Tooltip arrow text={tooltip} enterDelay={500}>
       <StyledButton {...props} />
     </Tooltip>
   ) : (

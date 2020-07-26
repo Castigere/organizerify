@@ -1,18 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import MaterialTooltip from '@material-ui/core/Tooltip';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  tooltip: {
+    fontSize: '0.8em',
+    top: '-10px',
+    padding: '0.5em',
+    borderRadius: '2px',
+    background: 'black'
+  },
+  arrow: {
+    color: 'black'
+  }
+};
+
+const StyledTooltip = withStyles(styles)(MaterialTooltip);
 
 const Tooltip = ({ text, open, children, ...props }) => {
   return (
-    <MaterialTooltip title={text} open={open} {...props}>
+    <StyledTooltip title={text} open={open} {...props}>
       {children}
-    </MaterialTooltip>
+    </StyledTooltip>
   );
 };
 
 Tooltip.defaultProps = {
-  text: 'There is nothing permanent except change.'
+  text: ''
 };
 
 Tooltip.propTypes = {

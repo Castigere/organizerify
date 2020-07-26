@@ -51,7 +51,7 @@ const Chevron = styled.div`
   width: 2px;
   margin-left: 0;
   margin-top: 0;
-  transform: rotate(270deg);
+  transform: rotate(90deg);
   transition: transform 0.1s ease-in;
 
   &::before {
@@ -77,7 +77,7 @@ const Chevron = styled.div`
   ${({ open }) =>
     open &&
     css`
-      transform: rotate(90deg);
+      transform: rotate(270deg);
       transition: all 0.1s ease;
     `}
 `;

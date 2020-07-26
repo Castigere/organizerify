@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 
 import withContext from 'context';
 import { useTask } from 'utils/hooks';
 import { session, subscriptions } from 'tasks';
+import { defaultTheme } from 'themes';
 
 import Routes from 'routes';
 import LoadingBar from 'components/LoadingBar';
@@ -17,17 +19,19 @@ const App = ({ isUserAuthenticated, isAppReady }) => {
   }, [isUserAuthenticated, isAppReady]);
 
   return isAppReady ? (
-    <Wrapper>
-      <Header />
-      <Body>
-        <LeftBar />
-        <Content>
-          <Routes isUserAuthenticated={isUserAuthenticated} />
-        </Content>
-        <RightBar />
-      </Body>
-      <Footer />
-    </Wrapper>
+    <ThemeProvider theme={defaultTheme}>
+      <Wrapper>
+        <Header />
+        <Body>
+          <LeftBar />
+          <Content>
+            <Routes isUserAuthenticated={isUserAuthenticated} />
+          </Content>
+          <RightBar />
+        </Body>
+        <Footer />
+      </Wrapper>
+    </ThemeProvider>
   ) : (
     <LoadingBar />
   );
