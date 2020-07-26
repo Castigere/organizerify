@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Collapsible from 'react-collapsible';
 
@@ -81,6 +82,8 @@ const Chevron = styled.div`
     `}
 `;
 
+export const FieldsetContext = createContext(false);
+
 const Fieldset = ({ children, legend, closed }) => {
   const [isCollapsed, setCollapsed] = useState(closed);
 
@@ -90,15 +93,23 @@ const Fieldset = ({ children, legend, closed }) => {
 
   return (
     <FieldsetStyle open={!isCollapsed}>
-      <Legend open={!isCollapsed} onClick={handleClick}>
-        <LegendText>{legend}</LegendText>
-        {legend && <Chevron open={!isCollapsed} />}
-      </Legend>
+      {legend && (
+        <Legend open={!isCollapsed} onClick={handleClick}>
+          <LegendText>{legend}</LegendText>
+          <Chevron open={!isCollapsed} />
+        </Legend>
+      )}
       <Collapsible open={!isCollapsed} transitionTime={220}>
-        {children}
+        <FieldsetContext.Provider value={isCollapsed}>{children}</FieldsetContext.Provider>
       </Collapsible>
     </FieldsetStyle>
   );
+};
+
+Fieldset.propTypes = {
+  children: PropTypes.node,
+  legend: PropTypes.string,
+  closed: PropTypes.bool
 };
 
 export default Fieldset;

@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+
+import { Tooltip } from 'components';
 
 const StyledButton = styled.button`
   border: 1px solid black;
@@ -41,13 +44,19 @@ const StyledButton = styled.button`
     `}
 `;
 
-const Button = ({ children, disabled, ...props }) =>
-  disabled ? (
-    <StyledButton disabled {...props}>
-      {children}
-    </StyledButton>
+const Button = ({ disabled, tooltip, ...props }) =>
+  tooltip && !disabled ? (
+    <Tooltip arrow text={tooltip}>
+      <StyledButton {...props} />
+    </Tooltip>
   ) : (
-    <StyledButton {...props}>{children}</StyledButton>
+    <StyledButton disabled={disabled ? true : false} {...props} />
   );
+
+Button.propTypes = {
+  children: PropTypes.node,
+  disabled: PropTypes.bool,
+  tooltip: PropTypes.string
+};
 
 export default Button;

@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled, { css } from 'styled-components';
+// import Tooltip from '@material-ui/core/Tooltip';
+
+import { Tooltip } from 'components';
+
+import { FieldsetContext } from './Fieldset';
 
 const InputStyle = styled.input`
   font-size: 1em;
@@ -55,27 +60,23 @@ const Label = styled.label`
   }
 `;
 
-const Error = styled.div`
-  color: #2c3e50;
-  float: right;
-  margin-right: 3%;
-  margin-top: -1.3em;
-  @media only screen and (max-width: 57em) {
-    color: #2c3e50;
-    margin-top: -1.3em;
-  }
-`;
+const Input = ({ label, error, focus, ...props }) => {
+  const fieldsetIsCollapsed = useContext(FieldsetContext);
 
-const Input = ({ children, label, error, focus, ...props }) => {
+  const [isTooltipOpen, setOpenTooltip] = useState(false);
+
+  useEffect(() => {
+    setOpenTooltip(!fieldsetIsCollapsed && error ? true : false);
+  }, [error, fieldsetIsCollapsed]);
+
   return (
     <>
       <Label error={error}>
         {label}:
-        <InputStyle ref={focus} {...props}>
-          {children}
-        </InputStyle>
+        <Tooltip text={error} open={isTooltipOpen} arrow>
+          <InputStyle ref={focus} {...props} />
+        </Tooltip>
       </Label>
-      <Error>{error}</Error>
     </>
   );
 };

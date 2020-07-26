@@ -70,7 +70,13 @@ const PersonalInformationForm = ({
           onChange={handleChange}
           error={errors.email}
         />
-        <Button right type="submit" disabled={!isValid}>
+        <Button
+          right
+          type="submit"
+          disabled={!isValid}
+          tooltip="Save updated profile"
+          alt="Save updated profile"
+        >
           Submit
         </Button>
       </Fieldset>

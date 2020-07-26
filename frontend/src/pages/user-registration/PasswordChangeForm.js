@@ -50,7 +50,13 @@ const PasswordChangeForm = ({ id, closed }) => {
           onChange={handleChange}
           error={errors.confirmedPassword}
         />
-        <Button right type="submit" disabled={!isValid}>
+        <Button
+          right
+          type="submit"
+          disabled={!isValid}
+          tooltip="Save new password"
+          alt="Save new password"
+        >
           Submit
         </Button>
       </Fieldset>
