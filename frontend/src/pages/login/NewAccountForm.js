@@ -1,20 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { useFormValidation } from 'utils';
 import { newAccountValidation } from './login-validation';
+import { user } from 'tasks';
 
 import { Input, Form, Fieldset } from 'components/form';
 import { Button } from 'components/buttons';
 
-const Login = () => {
+const NewAccountForm = ({ email }) => {
   const { isValid, values, errors, handleChange } = useFormValidation(
     { newPassword: '', confirmedPassword: '' },
     newAccountValidation
   );
 
+  const handleSubmit = () => {
+    user.loginUser({
+      email,
+      password: values.newPassword
+    });
+  };
+
+  console.log('email', email);
+
   return (
-    <Form>
-      <Fieldset legend="E-mail not registererd, register new account">
+    <Form onSubmit={handleSubmit}>
+      <Fieldset legend="Email address not registered, create new account?">
         <Input
           label="New passwordt"
           name="newPassword"
@@ -39,4 +50,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+NewAccountForm.propTypes = {
+  email: PropTypes.string.isRequired
+};
+
+export default NewAccountForm;

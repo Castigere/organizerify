@@ -5,38 +5,37 @@ import { useFormValidation } from 'utils';
 import { user } from 'tasks';
 import { emailValidation } from './login-validation';
 
-import { Input, Form, Fieldset } from 'components/form';
-import { REGEXP_EMAIL } from 'utils';
+import { SubmitInput, Form, Fieldset } from 'components/form';
 
 const EmailForm = ({ setAccountType }) => {
   const inputRef = useRef();
 
   useEffect(() => {
-    inputRef.current.focus();
+    inputRef.current && inputRef.current.focus();
   }, []);
 
-  const { values, errors, handleChange } = useFormValidation(
-    { email: '', password: '', newPassword: '', confirmedPassword: '' },
+  const { isValid, values, errors, handleChange } = useFormValidation(
+    { email: '' },
     emailValidation
   );
 
-  useEffect(() => {
-    REGEXP_EMAIL.test(values.email) &&
-      user.getUserAccountType({ email: values.email }).then(result => setAccountType(result.type));
-  }, [values.email, errors.email, setAccountType]);
+  const handleSubmit = event => {
+    event.preventDefault();
+    user.getUserAccountType({ email: values.email }).then(result => setAccountType(result));
+  };
 
-  // console.log('isValid', isValid);
-  // console.log('ERRORS', errors);
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Fieldset legend="Enter e-mail address to login">
-        <Input
+        <SubmitInput
           label="E-mail"
           name="email"
           value={values.email}
           onChange={handleChange}
           error={errors.email}
           focus={inputRef}
+          isValid={isValid}
+          onSubmit={handleSubmit}
         />
       </Fieldset>
     </Form>

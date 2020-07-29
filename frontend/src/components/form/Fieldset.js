@@ -61,7 +61,7 @@ const Chevron = styled.div`
     left: 0;
     height: 50%;
     width: 100%;
-    background: ${props => props.theme.accent};
+    background: ${props => props.theme.ACCENT};
     transform: skew(40deg, 0deg);
   }
   &::after {
@@ -71,7 +71,7 @@ const Chevron = styled.div`
     right: 0;
     height: 50%;
     width: 100%;
-    background: ${props => props.theme.accent};
+    background: ${props => props.theme.ACCENT};
     transform: skew(-40deg, 0deg);
   }
   ${({ open }) =>

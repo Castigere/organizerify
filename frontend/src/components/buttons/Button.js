@@ -17,7 +17,7 @@ const StyledButton = styled.button`
 
   &:hover {
     color: white;
-    background: ${props => props.theme.accent};
+    background: ${props => props.theme.ACCENT};
   }
 
   &:focus {

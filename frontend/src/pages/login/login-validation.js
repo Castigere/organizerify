@@ -11,6 +11,7 @@ const forWhitespaces = [
 const emailValidation = yup.object().shape({
   email: yup
     .string()
+    .max(64, 'Email not too long', 'Email address had too many characters')
     .test(...forWhitespaces)
     .email('Not an email address')
     .test('Valid email address', 'Not a valid email address', value => REGEXP_EMAIL.test(value))

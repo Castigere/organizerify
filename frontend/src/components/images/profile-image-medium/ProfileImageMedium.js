@@ -12,13 +12,13 @@ const ProfileImageMedium = ({ src, alt, ...props }) => (
   <StyledProfileImageMedium src={src} alt={alt} {...props} />
 );
 
+ProfileImageMedium.defaultProps = {
+  alt: 'no description'
+};
+
 ProfileImageMedium.propTypes = {
   alt: PropTypes.string,
   src: PropTypes.string.isRequired
-};
-
-ProfileImageMedium.defaultProps = {
-  alt: 'no description'
 };
 
 export default ProfileImageMedium;

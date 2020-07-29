@@ -9,14 +9,12 @@ import NewAccountForm from './NewAccountForm';
 const Login = () => {
   const [accountType, setAccountType] = useState();
 
-  // console.log('isValid', isValid);
-  // console.log('ERRORS', errors);
   return (
     <>
       <TextBox>
         <H1> Login </H1>
         <EmailForm setAccountType={setAccountType} />
-        {accountType === 'new' && <NewAccountForm />}
+        {accountType && accountType.type === 'new' && <NewAccountForm email={accountType.email} />}
       </TextBox>
     </>
   );
