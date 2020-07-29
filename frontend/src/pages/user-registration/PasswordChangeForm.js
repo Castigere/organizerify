@@ -25,7 +25,7 @@ const PasswordChangeForm = ({ id, closed }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Fieldset closed={closed} legend="Change password">
+      <Fieldset closed={closed} legend="Change password" collapsible>
         <Input
           label="Current password"
           type="password"

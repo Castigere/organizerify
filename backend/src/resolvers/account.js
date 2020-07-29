@@ -14,7 +14,7 @@ export default {
           available: false
         };
       }
-      return { email, exists: false };
+      return { email, exists: false, type: 'new' };
     },
     getEmailAvailability: combineResolvers(
       isAuthenticated,

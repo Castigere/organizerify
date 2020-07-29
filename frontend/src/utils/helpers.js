@@ -6,4 +6,8 @@ const doThenSetState = async (operation, args, setter) => {
 
 const trimWhitespaces = string => string.replace(/ /g, '');
 
-export { doThenSetState, trimWhitespaces };
+const objectLength = obj => Object.keys(obj).length;
+
+const objectIncludes = (obj, key) => Object.keys(obj).includes(key);
+
+export { doThenSetState, trimWhitespaces, objectLength, objectIncludes };

@@ -1,1 +1,1 @@
-export default { accent: '#4e9ce5', headercolor: '#2c3e50' };
+export default { accent: '#a9ed4b', headercolor: '#2c3e50' };

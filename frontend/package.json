@@ -26,6 +26,7 @@
     "react-toastify": "^5.3.2",
     "styled-components": "^5.1.1",
     "subscriptions-transport-ws": "^0.9.16",
+    "use-trace-update": "^1.3.0",
     "uuid": "^8.1.0",
     "yup": "0.29.1"
   },

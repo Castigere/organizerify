@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-// import Tooltip from '@material-ui/core/Tooltip';
 
 import { Tooltip } from 'components';
-
 import { FieldsetContext } from './Fieldset';
 
 const InputStyle = styled.input`
@@ -16,6 +15,17 @@ const InputStyle = styled.input`
   border: 1px solid #cccc;
   float: right;
   border-radius: 3px;
+
+  /* ${({ fadeIn }) =>
+    fadeIn &&
+    css`
+      opacity: 0;
+      &:focus {
+        border: 1px solid #2c3e50;
+        opacity: 1;
+        transition: opacity 0.5s;
+      }
+    `} */
   &:focus {
     border: 1px solid #2c3e50;
   }
@@ -38,6 +48,14 @@ const Label = styled.label`
   padding-left: 3%;
   margin-left: 2%;
   line-height: 3.6em;
+  transition: all 1s;
+  
+  /* ${({ fadeIn }) =>
+    fadeIn &&
+    css`
+      opacity: 1;
+      transition: opacity 0.5s;
+    `} */
   ${({ error }) =>
     error &&
     css`
@@ -48,7 +66,7 @@ const Label = styled.label`
         border-left: 0 solid white;
       }
     `}
-  @media only screen and (max-width: 57em) {
+    @media only screen and (max-width: 57em) {
     padding-top: 0.5em;
     margin-bottom: 0;
     float: node;
@@ -57,7 +75,7 @@ const Label = styled.label`
   }
 `;
 
-const Input = ({ label, error, focus, ...props }) => {
+const Input = ({ label, error, focus, fadeIn, ...props }) => {
   const fieldsetIsCollapsed = useContext(FieldsetContext);
 
   const [isTooltipOpen, setOpenTooltip] = useState(false);
@@ -68,14 +86,24 @@ const Input = ({ label, error, focus, ...props }) => {
 
   return (
     <>
-      <Label error={error}>
+      <Label error={error} fadeIn={fadeIn ? true : false}>
         {label}:
         <Tooltip text={error} open={isTooltipOpen} arrow>
-          <InputStyle ref={focus} {...props} />
+          <InputStyle fadeIn={fadeIn ? true : false} ref={focus} {...props} />
         </Tooltip>
       </Label>
     </>
   );
+};
+
+Input.propTypes = {
+  label: PropTypes.string,
+  error: PropTypes.string,
+  focis: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) })
+  ]),
+  fadeIn: PropTypes.bool
 };
 
 export default Input;

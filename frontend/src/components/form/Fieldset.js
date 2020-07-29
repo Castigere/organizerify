@@ -27,7 +27,7 @@ const Legend = styled.legend`
   font-size: 1.1em;
   font-family: Georgia, serif;
   margin-left: 0;
-  cursor: pointer;
+  cursor: ${({ collapsible }) => (collapsible ? 'pointer' : 'null')};
   user-select: none;
   &::first-letter {
     font-size: 1.1em;
@@ -84,7 +84,7 @@ const Chevron = styled.div`
 
 export const FieldsetContext = createContext(false);
 
-const Fieldset = ({ children, legend, closed }) => {
+const Fieldset = ({ children, legend, closed, collapsible }) => {
   const [isCollapsed, setCollapsed] = useState(closed);
 
   const handleClick = () => {
@@ -93,10 +93,15 @@ const Fieldset = ({ children, legend, closed }) => {
 
   return (
     <FieldsetStyle open={!isCollapsed}>
-      {legend && (
-        <Legend open={!isCollapsed} onClick={handleClick}>
+      {collapsible && legend && (
+        <Legend open={!isCollapsed} onClick={handleClick} collapsible={collapsible}>
           <LegendText>{legend}</LegendText>
           <Chevron open={!isCollapsed} />
+        </Legend>
+      )}
+      {!collapsible && legend && (
+        <Legend collapsible={collapsible}>
+          <LegendText>{legend}</LegendText>
         </Legend>
       )}
       <Collapsible open={!isCollapsed} transitionTime={220}>
@@ -109,7 +114,8 @@ const Fieldset = ({ children, legend, closed }) => {
 Fieldset.propTypes = {
   children: PropTypes.node,
   legend: PropTypes.string,
-  closed: PropTypes.bool
+  closed: PropTypes.bool,
+  collapsible: PropTypes.bool
 };
 
 export default Fieldset;

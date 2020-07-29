@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { UserStatusWidget } from 'components/widgets';
 
 const StyledHeader = styled.div`
-  z-index: 1000;
+  z-index: 10000;
   position: fixed;
   width: 100%;
   height: 5em;

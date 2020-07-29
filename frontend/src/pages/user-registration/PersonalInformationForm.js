@@ -29,7 +29,7 @@ const PersonalInformationForm = ({
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Fieldset closed={closed} legend="Personal information">
+      <Fieldset closed={closed} legend="Personal information" collapsible>
         <Input
           label="First name"
           type="text"
