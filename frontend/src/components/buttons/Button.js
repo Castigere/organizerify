@@ -32,9 +32,10 @@ const StyledButton = styled.button`
 
   @media only screen and (max-width: 57em) {
     float: right;
-    height: 4em;
+    height: 3em;
     width: 50%;
     font-size: 1em;
+    margin-bottom: 1em;
   }
 
   ${({ right }) =>

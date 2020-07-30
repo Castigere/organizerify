@@ -70,6 +70,11 @@ const SubmitInputBtn = styled.div`
       }
       /* stylelint-enable */
     `}
+
+  @media only screen and (max-width: 57em) {
+    /* margin-left: 0.2em; */
+    margin-right: 1px;
+  }
 `;
 
 const SubmitArrow = styled.img`
@@ -89,7 +94,6 @@ const Label = styled.label`
   padding-left: 3%;
   margin-left: 2%;
   line-height: 3.6em;
-  transition: all 1s;
 
   ${({ error }) =>
     error &&
@@ -101,12 +105,16 @@ const Label = styled.label`
         border-left: 0 solid white;
       }
     `}
+
   @media only screen and (max-width: 57em) {
     padding-top: 0.5em;
-    margin-bottom: 0;
     float: node;
     line-height: 0;
     border-left: 0 solid white;
+    padding-left: 0;
+    margin: 0;
+    margin-left: 1px;
+    width: 100%;
   }
 `;
 

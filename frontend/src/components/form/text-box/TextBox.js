@@ -8,7 +8,9 @@ const TextBox = styled.div`
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   padding: 3%;
   @media only screen and (max-width: 57em) {
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 `;
 

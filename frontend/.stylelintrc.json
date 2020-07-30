@@ -9,6 +9,8 @@
   ],
   "rules": {
     "prettier/prettier": true,
-    "value-keyword-case": null
+    "value-keyword-case": null,
+    "no-empty-source": null,
+    "comment-empty-line-before": null
   }
 }

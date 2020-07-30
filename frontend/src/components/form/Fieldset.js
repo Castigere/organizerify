@@ -12,10 +12,15 @@ const FieldsetStyle = styled.fieldset`
     !open &&
     css`
       padding-bottom: 0.3em;
-      transition all 0.4s ease-in;
+      @media only screen and (max-width: 57em) {
+        width: 98%;
+      }
     `}
   @media only screen and (max-width: 57em) {
     margin: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 0;
     margin-top: 1.5em;
   }
 `;
@@ -33,6 +38,9 @@ const Legend = styled.legend`
     font-size: 1.1em;
   }
   ${({ open }) => open && css``}
+  @media only screen and (max-width: 57em) {
+    height: 2em;
+  }
 `;
 
 const LegendText = styled.div`
@@ -80,6 +88,9 @@ const Chevron = styled.div`
       transform: rotate(270deg);
       transition: all 0.1s ease;
     `}
+  @media only screen and (max-width: 57em) {
+    margin-right: 1em;
+  }
 `;
 
 export const FieldsetContext = createContext(false);
