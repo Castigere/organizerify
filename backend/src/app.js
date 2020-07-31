@@ -63,8 +63,6 @@ app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname, '/build/index.html'));
 });
 
-// apolloServer.applyMiddleware({ app, cors: false, path: '/graphql' });
-
 const httpServer = http.createServer(app);
 apolloServer.installSubscriptionHandlers(httpServer);
 

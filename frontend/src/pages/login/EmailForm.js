@@ -22,15 +22,17 @@ const EmailForm = ({ setAccountType }) => {
 
   const [handleSubmit, setHandleSubmit] = useState(() => {});
 
+  const { search } = new URL(window.location.href);
+
   useEffect(() => {
     const redirectToGoogle = event => {
       event.preventDefault();
-      window.location.href = GOOGLE_AUTH_ENDPOINT;
+      window.location.href = `${GOOGLE_AUTH_ENDPOINT}${search}`;
     };
 
     const redirectToFacebook = event => {
       event.preventDefault();
-      window.location.href = FACEBOOK_AUTH_ENDPOINT;
+      window.location.href = `${FACEBOOK_AUTH_ENDPOINT}${search}`;
     };
 
     isValid &&
@@ -52,7 +54,7 @@ const EmailForm = ({ setAccountType }) => {
       });
 
     !isValid && setAccountType({ type: '', email: '' });
-  }, [values.email, isValid, setAccountType]);
+  }, [values.email, isValid, setAccountType, search]);
 
   return (
     <Form onSubmit={handleSubmit}>

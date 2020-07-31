@@ -9,7 +9,7 @@ import { API_VERSION } from '../config';
  */
 router.get(`${API_VERSION}/auth/google`, auth.authenticateGoogle());
 
-router.get(`${API_VERSION}/auth/google/callback`, auth.authenticateGoogle());
+router.get(`${API_VERSION}/auth/google/callback`, auth.authenticateGoogleCallback());
 
 router.get(`${API_VERSION}/auth/facebook`, auth.authenticateFacebook());
 

@@ -21,8 +21,6 @@ const NewAccountForm = ({ email }) => {
     });
   };
 
-  console.log('email', email);
-
   return (
     <Form onSubmit={handleSubmit}>
       <Fieldset legend="Email address not registered, create new account?">

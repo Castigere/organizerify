@@ -32,6 +32,7 @@ const apolloServer = new ApolloServer({
     }
     if (req) {
       // console.log('GQL REQUEST:', req.body);
+      req.session.referer = req.headers.referer;
       return {
         isAuth: req.isAuthenticated(),
         currentUserRole: req.isAuthenticated() ? req.session.passport.user.role : null,

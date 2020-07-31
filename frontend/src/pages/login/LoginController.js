@@ -12,13 +12,11 @@ const Login = () => {
   const { type, email } = accountType;
 
   return (
-    <>
-      <TextBox>
-        <H1> Login </H1>
-        <EmailForm setAccountType={setAccountType} />
-        {type === 'new' && <NewAccountForm email={email} />}
-      </TextBox>
-    </>
+    <TextBox>
+      <H1> Login </H1>
+      <EmailForm setAccountType={setAccountType} />
+      {type === 'new' && <NewAccountForm email={email} />}
+    </TextBox>
   );
 };
 
