@@ -7,14 +7,16 @@ import EmailForm from './EmailForm';
 import NewAccountForm from './NewAccountForm';
 
 const Login = () => {
-  const [accountType, setAccountType] = useState();
+  const [accountType, setAccountType] = useState({ type: '', email: '' });
+
+  const { type, email } = accountType;
 
   return (
     <>
       <TextBox>
         <H1> Login </H1>
         <EmailForm setAccountType={setAccountType} />
-        {accountType && accountType.type === 'new' && <NewAccountForm email={accountType.email} />}
+        {type === 'new' && <NewAccountForm email={email} />}
       </TextBox>
     </>
   );

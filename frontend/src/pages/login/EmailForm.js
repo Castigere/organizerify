@@ -1,9 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { useFormValidation } from 'utils';
 import { user } from 'tasks';
 import { emailValidation } from './login-validation';
+import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 
 import { SubmitInput, Form, Fieldset } from 'components/form';
 
@@ -19,10 +20,39 @@ const EmailForm = ({ setAccountType }) => {
     emailValidation
   );
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    user.getUserAccountType({ email: values.email }).then(result => setAccountType(result));
-  };
+  const [handleSubmit, setHandleSubmit] = useState(() => {});
+
+  useEffect(() => {
+    const redirectToGoogle = event => {
+      event.preventDefault();
+      window.location.href = GOOGLE_AUTH_ENDPOINT;
+    };
+
+    const redirectToFacebook = event => {
+      event.preventDefault();
+      window.location.href = FACEBOOK_AUTH_ENDPOINT;
+    };
+
+    isValid &&
+      user.getUserAccountType({ email: values.email }).then(result => {
+        switch (result.type) {
+          case 'google':
+            setHandleSubmit(() => redirectToGoogle);
+            break;
+          case 'facebook':
+            setHandleSubmit(() => redirectToFacebook);
+            break;
+          default:
+            setHandleSubmit(() => event => {
+              event.preventDefault();
+              setAccountType(result);
+            });
+            break;
+        }
+      });
+
+    !isValid && setAccountType({ type: '', email: '' });
+  }, [values.email, isValid, setAccountType]);
 
   return (
     <Form onSubmit={handleSubmit}>
