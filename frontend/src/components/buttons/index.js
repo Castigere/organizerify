@@ -1,6 +1,6 @@
 import Button from './Button';
 import ConfirmButton from './ConfirmButton';
-import SignupWithGoogle from './SignupWithGoogle';
-import SignupWithFacebook from './SignupWithFacebook';
+import SignUpWithFacebook from './SignUpWithFacebook';
+import SignUpWithGoogle from './SignUpWithGoogle';
 
-export { Button, ConfirmButton, SignupWithGoogle, SignupWithFacebook };
+export { Button, ConfirmButton, SignUpWithFacebook, SignUpWithGoogle };

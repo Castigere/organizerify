@@ -6,11 +6,15 @@ import { AUTH_SUCCESS_REDIRECT_URL } from '../config';
  */
 exports.authenticateGoogle = () => {
   return (req, res, next) => {
-    req.session.originalReferer = req.query.url;
+    const {
+      query: { url, email }
+    } = req;
+    req.session.originalReferer = url ? url : '';
+    req.session.signupEmail = email ? email : '';
     passport.authenticate('google', {
       scope: ['profile'],
       successRedirect: req.query.url,
-      failureRedirect: '/login'
+      failureRedirect: '/signup'
     })(req, res, next);
   };
 };
@@ -19,8 +23,8 @@ exports.authenticateGoogleCallback = () => {
   return (req, res, next) => {
     passport.authenticate('google', {
       scope: ['profile'],
-      successRedirect: `${AUTH_SUCCESS_REDIRECT_URL}${req.session.originalReferer}`,
-      failureRedirect: '/login'
+      successRedirect: `${AUTH_SUCCESS_REDIRECT_URL}${req.session.originalReferer}/?email=${req.session.signupEmail}`,
+      failureRedirect: '/signup'
     })(req, res, next);
   };
 };

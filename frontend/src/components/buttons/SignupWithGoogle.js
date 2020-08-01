@@ -7,7 +7,8 @@ const SignUpWithGoogleContainer = styled.div`
   border: 1px solid #ccc;
   margin: 1.5em;
   margin-top: 0;
-  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
   @media only screen and (max-width: 57em) {
     margin: 0;
     margin-top: 0.5em;
@@ -29,9 +30,9 @@ const SignUpText = styled.div`
   padding-bottom: 0.6em;
 `;
 
-const SignInWithGoogle = ({ children, ...props }) => {
+const SignUpWithGoogle = ({ children, ...props }) => {
   return (
-    <SignUpWithGoogleContainer>
+    <SignUpWithGoogleContainer {...props}>
       <SignUpIcon height="25">
         <g fill="none" fillRule="evenodd">
           <path
@@ -52,9 +53,9 @@ const SignInWithGoogle = ({ children, ...props }) => {
           ></path>
         </g>
       </SignUpIcon>
-      <SignUpText {...props}> Sign up with Google </SignUpText>
+      <SignUpText> Sign up with Google </SignUpText>
     </SignUpWithGoogleContainer>
   );
 };
 
-export default SignInWithGoogle;
+export default SignUpWithGoogle;

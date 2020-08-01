@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import { useFormValidation } from 'utils';
 import { newAccountValidation } from './signup-validation';
 import { user } from 'tasks';
+import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 
 import { Input, Form, Fieldset, Panel } from 'components/form';
-import { Button, SignupWithGoogle, SignupWithFacebook } from 'components/buttons';
+import { Button, SignUpWithGoogle, SignUpWithFacebook } from 'components/buttons';
 import { HorizontallyAlign } from 'components/containers';
 
 const NewAccountForm = ({ email }) => {
@@ -23,15 +24,25 @@ const NewAccountForm = ({ email }) => {
     });
   };
 
+  const signUpWithGoogle = event => {
+    event.preventDefault();
+    window.location.href = `${GOOGLE_AUTH_ENDPOINT}?email=${email}`;
+  };
+
+  const signUpWithFacebook = event => {
+    event.preventDefault();
+    window.location.href = `${FACEBOOK_AUTH_ENDPOINT}?email?${email}`;
+  };
+
   return (
     <>
       <Panel>
-        The entered e-mail address is not in use. Enter a password to create a local user or use one
-        of the following identity providers to register.
+        The entered e-mail address is not in use. Enter a password to create a local user or sign up
+        with one of the following identity providers.
       </Panel>
       <HorizontallyAlign>
-        <SignupWithGoogle />
-        <SignupWithFacebook />
+        <SignUpWithGoogle onClick={signUpWithGoogle} />
+        <SignUpWithFacebook onClick={signUpWithFacebook} />
       </HorizontallyAlign>
       <Form onSubmit={handleSubmit}>
         <Fieldset legend="Create new local user?">

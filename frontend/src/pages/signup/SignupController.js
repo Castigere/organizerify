@@ -14,7 +14,6 @@ const Signup = () => {
       <H1> Signup </H1>
       <EmailForm setAccountType={setAccountType} />
       {type === 'new' && <NewAccountForm email={email} />}
-      <NewAccountForm email={email} />
     </TextBox>
   );
 };

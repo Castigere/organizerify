@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PanelContainer = styled.div`
-  display: float;
+  display: flex;
   margin: 2em;
   margin-left: 3em;
   margin-right: 3em;
