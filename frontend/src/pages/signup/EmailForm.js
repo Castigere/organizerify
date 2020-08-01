@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { useFormValidation } from 'utils';
 import { user } from 'tasks';
-import { emailValidation } from './login-validation';
+import { emailValidation } from './signup-validation';
 import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 
 import { SubmitInput, Form, Fieldset } from 'components/form';
@@ -20,7 +20,7 @@ const EmailForm = ({ setAccountType }) => {
     emailValidation
   );
 
-  const [handleSubmit, setHandleSubmit] = useState(() => {});
+  const [handleSubmit, setHandleSubmit] = useState(() => event => event.preventDefault());
 
   const { search } = new URL(window.location.href);
 
@@ -58,7 +58,7 @@ const EmailForm = ({ setAccountType }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Fieldset legend="Enter e-mail address to login">
+      <Fieldset legend="Enter e-mail address to sign up">
         <SubmitInput
           label="E-mail"
           name="email"

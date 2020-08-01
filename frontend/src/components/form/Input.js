@@ -12,7 +12,7 @@ const Label = styled.label`
   width: 94%;
   background: inherit;
   float: left;
-  border-left: 2px solid ${props => props.theme.accent};
+  border-left: 2px solid ${props => props.theme.ACCENT};
   padding-left: 3%;
   margin-left: 2%;
   line-height: 3.6em;

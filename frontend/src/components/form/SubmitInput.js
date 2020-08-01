@@ -72,7 +72,6 @@ const SubmitInputBtn = styled.div`
     `}
 
   @media only screen and (max-width: 57em) {
-    /* margin-left: 0.2em; */
     margin-right: 1px;
   }
 `;

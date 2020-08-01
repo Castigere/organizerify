@@ -8,7 +8,7 @@ const selectorList = { preload, auth, user, submit };
 /**
  * Function returning object of objects containing memoized selectors.
  * Code returned looks like this:
- *  selectors.auth.getLoggedInUser: state => state.user.loggedInUser
+ * selectors.auth.getLoggedInUser: state => state.user.loggedInUser
  * @param {Object} selectorList
  * @returns {Object}, selectors
  */

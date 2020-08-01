@@ -12,6 +12,9 @@ const getUserFullName = ({ loggedInUser }) => {
   return 'mr. Noname Assholeius';
 };
 
-const getCurrentUser = ({ loggedInUser }) => loggedInUser;
+const getCurrentUser = ({ loggedInUser }) => loggedInUser && loggedInUser;
 
-export default { getUserFullName, getCurrentUser };
+const getUserStatus = ({ loggedInUser }) =>
+  loggedInUser ? loggedInUser.status : 'user not logged in';
+
+export default { getUserFullName, getCurrentUser, getUserStatus };

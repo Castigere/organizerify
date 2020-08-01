@@ -11,7 +11,7 @@ import Routes from 'routes';
 import LoadingBar from 'components/LoadingBar';
 import { Wrapper, Body, LeftBar, Content, RightBar, Footer, Header } from 'components/layout';
 
-const App = ({ isUserAuthenticated, isAppReady }) => {
+const App = ({ isUserAuthenticated, isAppReady, userStatus }) => {
   useTask(session.prepareApp);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const App = ({ isUserAuthenticated, isAppReady }) => {
         <Body>
           <LeftBar />
           <Content>
-            <Routes isUserAuthenticated={isUserAuthenticated} />
+            <Routes isUserAuthenticated={isUserAuthenticated} userStatus={userStatus} />
           </Content>
           <RightBar />
         </Body>
@@ -44,7 +44,8 @@ App.propTypes = {
 
 const mapStateToProps = (state, selectors) => ({
   isUserAuthenticated: selectors.auth.getAuthenticationStatus(state),
-  isAppReady: selectors.preload.getAppStatus(state)
+  isAppReady: selectors.preload.getAppStatus(state),
+  userStatus: selectors.user.getUserStatus(state)
 });
 
 export default withContext(App, mapStateToProps);
