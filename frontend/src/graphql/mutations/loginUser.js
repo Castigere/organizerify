@@ -10,6 +10,7 @@ const loginUser = gql`
       lastName
       email
       role
+      status
     }
   }
 `;

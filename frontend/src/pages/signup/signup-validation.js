@@ -17,7 +17,7 @@ const emailValidation = yup.object().shape({
     .test('Valid email address', 'Not a valid email address', value => REGEXP_EMAIL.test(value))
 });
 
-const newAccountValidation = yup.object().shape({
+const newPasswordValidtaion = yup.object().shape({
   newPassword: yup
     .string()
     .min(8, 'Password needs to be at least eight characters long')
@@ -33,7 +33,7 @@ const newAccountValidation = yup.object().shape({
   })
 });
 
-const localAccountValidation = yup.object().shape({
+const passwordValidation = yup.object().shape({
   password: yup
     .string()
     .test(...forWhitespaces)
@@ -41,4 +41,4 @@ const localAccountValidation = yup.object().shape({
     .required('Enter password')
 });
 
-export { emailValidation, newAccountValidation, localAccountValidation };
+export { emailValidation, passwordValidation, newPasswordValidtaion };

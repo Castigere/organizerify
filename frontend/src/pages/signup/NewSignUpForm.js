@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { useFormValidation, getURLSearchParam } from 'utils';
-import { newAccountValidation } from './signup-validation';
+import { newPasswordValidtaion } from './signup-validation';
 import { user } from 'tasks';
 import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 
@@ -10,10 +10,10 @@ import { Input, Form, Fieldset, Panel } from 'components/form';
 import { Button, SignUpWithGoogle, SignUpWithFacebook } from 'components/buttons';
 import { HorizontallyAlign } from 'components/containers';
 
-const NewAccountForm = ({ email }) => {
+const NewSignUpForm = ({ email }) => {
   const { isValid, values, errors, handleChange } = useFormValidation(
     { newPassword: '', confirmedPassword: '' },
-    newAccountValidation
+    newPasswordValidtaion
   );
 
   const handleSubmit = event => {
@@ -73,8 +73,8 @@ const NewAccountForm = ({ email }) => {
   );
 };
 
-NewAccountForm.propTypes = {
+NewSignUpForm.propTypes = {
   email: PropTypes.string.isRequired
 };
 
-export default NewAccountForm;
+export default NewSignUpForm;
