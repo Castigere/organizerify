@@ -14,12 +14,12 @@ import './app.css';
 ReactDOM.render(
   <Router>
     <StoreProvider>
-      <div>
+      <>
         <ThemeProvider theme={{ accent: '#4e9ce5', headercolor: '#2c3e50' }}>
           <App />
         </ThemeProvider>
         <Messaging />
-      </div>
+      </>
     </StoreProvider>
   </Router>,
   document.getElementById('root')

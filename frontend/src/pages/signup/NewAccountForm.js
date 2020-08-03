@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useFormValidation } from 'utils';
+import { useFormValidation, getURLSearchParam } from 'utils';
 import { newAccountValidation } from './signup-validation';
 import { user } from 'tasks';
 import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
@@ -24,14 +24,16 @@ const NewAccountForm = ({ email }) => {
     });
   };
 
+  const url = getURLSearchParam('url');
+
   const signUpWithGoogle = event => {
     event.preventDefault();
-    window.location.href = `${GOOGLE_AUTH_ENDPOINT}?email=${email}`;
+    window.location.href = `${GOOGLE_AUTH_ENDPOINT}?url=${url}&email=${email}`;
   };
 
   const signUpWithFacebook = event => {
     event.preventDefault();
-    window.location.href = `${FACEBOOK_AUTH_ENDPOINT}?email?${email}`;
+    window.location.href = `${FACEBOOK_AUTH_ENDPOINT}?url=${url}&email=${email}`;
   };
 
   return (

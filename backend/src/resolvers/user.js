@@ -38,6 +38,7 @@ export default {
          * Checking length of required fields for an activated user.
          * If one or more strings are empty, user will be set to status incomplete.
          */
+        console.log('ARGS', args);
         args.status = 'active';
         [args.firstName, args.middleName, args.lastName, args.email, args.mobileNumber].map(
           item => {

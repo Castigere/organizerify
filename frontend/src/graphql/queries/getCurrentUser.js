@@ -12,6 +12,7 @@ const getCurrentUser = gql`
       middleName
       role
       status
+      type
     }
   }
 `;

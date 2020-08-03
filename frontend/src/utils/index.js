@@ -1,7 +1,13 @@
 import useFormValidation from './useFormValidation';
 import PrivateRoute from './PrivateRoute';
 import { REGEXP_WHITESPACES, REGEXP_EMAIL } from './regexp';
-import { doThenSetState, trimWhitespaces, objectLength, objectIncludes } from './helpers';
+import {
+  doThenSetState,
+  trimWhitespaces,
+  objectLength,
+  objectIncludes,
+  getURLSearchParam
+} from './helpers';
 
 export {
   useFormValidation,
@@ -11,5 +17,6 @@ export {
   doThenSetState,
   trimWhitespaces,
   objectLength,
-  objectIncludes
+  objectIncludes,
+  getURLSearchParam
 };

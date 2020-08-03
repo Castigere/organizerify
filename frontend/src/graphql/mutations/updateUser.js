@@ -25,6 +25,7 @@ const updateUser = gql`
       lastName
       middleName
       role
+      status
     }
   }
 `;

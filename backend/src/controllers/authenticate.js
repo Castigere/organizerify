@@ -21,9 +21,24 @@ exports.authenticateGoogle = () => {
 
 exports.authenticateGoogleCallback = () => {
   return (req, res, next) => {
+    const successRedirectURL = () => {
+      const {
+        session: { originalReferer, signupEmail }
+      } = req;
+      console.log(originalReferer, signupEmail);
+      if (originalReferer === '' && signupEmail === '') return `${AUTH_SUCCESS_REDIRECT_URL}`;
+      if (originalReferer.length > 0 && signupEmail === '')
+        return `${AUTH_SUCCESS_REDIRECT_URL}?url=${originalReferer}`;
+      if (originalReferer.length === '' && signupEmail.length > 0)
+        return `${AUTH_SUCCESS_REDIRECT_URL}/?email=${signupEmail}`;
+      if (originalReferer.length > 0 && signupEmail.length > 0)
+        return `${AUTH_SUCCESS_REDIRECT_URL}?url=${originalReferer}&email=${signupEmail}`;
+    };
+    console.log('CALLBACK', successRedirectURL());
+
     passport.authenticate('google', {
       scope: ['profile'],
-      successRedirect: `${AUTH_SUCCESS_REDIRECT_URL}${req.session.originalReferer}/?email=${req.session.signupEmail}`,
+      successRedirect: successRedirectURL(),
       failureRedirect: '/signup'
     })(req, res, next);
   };

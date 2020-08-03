@@ -18,7 +18,6 @@ export default gql`
       mobileNumber: String
       password: String!
       role: String
-      status: String!
     ): User!
     updateUser(
       id: ID!
@@ -29,7 +28,6 @@ export default gql`
       mobileNumber: String
       language: String
       role: String
-      status: String!
     ): User!
     deleteUser(id: ID!): Boolean!
     signUpUser(email: String!, password: String!): User!
