@@ -13,30 +13,7 @@ const Routes = ({ isUserAuthenticated, userStatus }) => {
   const loginURL = `/signup?url=${pathname}${search.replace('?', '&')}`;
   const redirectURL = `${getURLSearchParam('url')}`;
   const urlParam = getURLSearchParam('url');
-
-  // console.log('redirectURL', redirectURL);
-  // console.log('urlParam', urlParam);
-  // console.log('isUserAuth', isUserAuthenticated);
-  // console.log('userStatusActive', userStatusActive);
-  // console.log('userStatusIncomplete', userStatusIncomplete);
-  // console.log('search', search);
-
-  // const debugURL = new URL(window.location.href).searchParams;
-  // console.log(debugURL);
-
-  // Grab contextpath if user is not fetching userregistration so that we can redirect to original url once
-  // registration is complete, otherwise just add query string to redirect url
-  // const userRegistrationURL = pathname.includes('userregistration')
-  //   ? `/userregistration${search}`
-  //   : `/userregistration?url=${pathname}${search}`;
-
   const userRegistrationURL = `/userregistration${search}`;
-
-  // console.log(
-  //   'userRegistration pathname includes userregistration',
-  //   pathname.includes('userregistration')
-  // );
-  // console.log('Userreg', userRegistrationURL);
 
   return (
     <>

@@ -8,6 +8,7 @@ const signUpUser = gql`
       lastName
       email
       status
+      type
     }
   }
 `;

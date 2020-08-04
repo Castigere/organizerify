@@ -7,7 +7,7 @@ import { user } from 'tasks';
 import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 
 import { Input, Form, Fieldset, Panel } from 'components/form';
-import { Button, SignUpWithGoogle, SignUpWithFacebook } from 'components/buttons';
+import { Button, SignUpWithGoogle, SignUpWithFacebookButton } from 'components/buttons';
 import { HorizontallyAlign } from 'components/containers';
 
 const NewSignUpForm = ({ email }) => {
@@ -44,7 +44,7 @@ const NewSignUpForm = ({ email }) => {
       </Panel>
       <HorizontallyAlign>
         <SignUpWithGoogle onClick={signUpWithGoogle} />
-        <SignUpWithFacebook onClick={signUpWithFacebook} />
+        <SignUpWithFacebookButton onClick={signUpWithFacebook} />
       </HorizontallyAlign>
       <Form onSubmit={handleSubmit}>
         <Fieldset legend="Create new local user?">
