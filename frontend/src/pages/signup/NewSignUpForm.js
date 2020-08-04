@@ -7,7 +7,9 @@ import { user } from 'tasks';
 import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 
 import { Input, Form, Fieldset, Panel } from 'components/form';
-import { Button, SignUpWithGoogle, SignUpWithFacebookButton } from 'components/buttons';
+import { Button } from 'components/buttons';
+import SignUpWithFacebookButton from 'components/buttons/SignUpWithFacebookButton';
+import SignUpWithGoogle from 'components/buttons/SignUpWithGoogle';
 import { HorizontallyAlign } from 'components/containers';
 
 const NewSignUpForm = ({ email }) => {
