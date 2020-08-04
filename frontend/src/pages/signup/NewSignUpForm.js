@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useFormValidation, getURLSearchParam } from 'utils';
+import { useFormValidation } from 'utils';
 import { newPasswordValidtaion } from './signup-validation';
 import { user } from 'tasks';
-import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
+// import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 
 import { Input, Form, Fieldset, Panel } from 'components/form';
 import { Button } from 'components/buttons';
@@ -24,17 +24,17 @@ const NewSignUpForm = ({ email }) => {
     });
   };
 
-  const url = getURLSearchParam('url');
+  // const url = getURLSearchParam('url');
 
-  const signUpWithGoogle = event => {
-    event.preventDefault();
-    window.location.href = `${GOOGLE_AUTH_ENDPOINT}?url=${url}&email=${email}`;
-  };
+  // const signUpWithGoogle = event => {
+  //   event.preventDefault();
+  //   window.location.href = `${GOOGLE_AUTH_ENDPOINT}?url=${url}&email=${email}`;
+  // };
 
-  const signUpWithFacebook = event => {
-    event.preventDefault();
-    window.location.href = `${FACEBOOK_AUTH_ENDPOINT}?url=${url}&email=${email}`;
-  };
+  // const signUpWithFacebook = event => {
+  //   event.preventDefault();
+  //   window.location.href = `${FACEBOOK_AUTH_ENDPOINT}?url=${url}&email=${email}`;
+  // };
 
   return (
     <>
