@@ -1,13 +1,14 @@
 import * as yup from 'yup';
 import i18next from 'i18next';
 
-import { forWhitespaces } from 'utils';
+import { forWhitespaces, REGEXP_EMAIL } from 'utils';
 
 const emailValidation = yup.object().shape({
   email: yup
     .string()
     .max(64, i18next.t('signup:validation.emailMaxLength'))
     .test(...forWhitespaces(i18next.t('signup:validation.emailNoWhitespaces')))
+    .test('', i18next.t('signup:validation.emailNotValidFormat'), value => REGEXP_EMAIL.test(value))
     .email(i18next.t('signup:validation.emailNotValidFormat'))
 });
 
@@ -23,7 +24,7 @@ const newPasswordValidtaion = yup.object().shape({
     then: yup
       .string()
       .oneOf([yup.ref('newPassword')], i18next.t('signup:validation.passwordNotMaching'))
-      .required(('signup:validation.passwordRequired'))
+      .required('signup:validation.passwordRequired')
   })
 });
 
