@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { useFormValidation, getURLSearchParam } from 'utils';
 import { newPasswordValidtaion } from './signup-validation';
@@ -11,6 +12,7 @@ import { Button, SignUpWithFacebookButton, SignUpWithGoogleButton } from 'compon
 import { HorizontallyAlign } from 'components/containers';
 
 const NewSignUpForm = ({ email }) => {
+  const { t } = useTranslation();
   const { isValid, values, errors, handleChange } = useFormValidation(
     { newPassword: '', confirmedPassword: '' },
     newPasswordValidtaion
@@ -38,18 +40,15 @@ const NewSignUpForm = ({ email }) => {
 
   return (
     <>
-      <Panel>
-        The entered e-mail address is not in use. Enter a password to create a local user or sign up
-        with one of the following identity providers.
-      </Panel>
+      <Panel>{t('signup:emailNotInUseInfo')}</Panel>
       <HorizontallyAlign>
         <SignUpWithGoogleButton onClick={signUpWithGoogle} />
         <SignUpWithFacebookButton onClick={signUpWithFacebook} />
       </HorizontallyAlign>
       <Form onSubmit={handleSubmit}>
-        <Fieldset legend="Create new local user?">
+        <Fieldset legend={t('signup:newUserLegend')}>
           <Input
-            label="Password"
+            label={t('signup:passwordInput')}
             name="newPassword"
             type="password"
             value={values.newPassword}
@@ -57,7 +56,7 @@ const NewSignUpForm = ({ email }) => {
             error={errors.newPassword}
           />
           <Input
-            label="Confirm password"
+            label={t('signup:confirmedPasswordInput')}
             name="confirmedPassword"
             type="password"
             value={values.confirmedPassword}
@@ -65,7 +64,7 @@ const NewSignUpForm = ({ email }) => {
             error={errors.confirmedPassword}
           />
           <Button right disabled={!isValid}>
-            Register
+            {t('signup:signUpButton')}
           </Button>
         </Fieldset>
       </Form>

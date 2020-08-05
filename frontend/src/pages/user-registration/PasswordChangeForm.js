@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next'
 
 import { user } from 'tasks';
 import { useFormValidation } from 'utils';
@@ -9,6 +10,7 @@ import { Input, Form, Fieldset } from 'components/form';
 import { Button } from 'components/buttons';
 
 const PasswordChangeForm = ({ id, closed }) => {
+  const { t } = useTranslation()
   const { isValid, values, errors, handleChange } = useFormValidation(
     { currentPassword: '', newPassword: '', confirmedPassword: '' },
     passwordValidation
@@ -25,9 +27,9 @@ const PasswordChangeForm = ({ id, closed }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Fieldset closed={closed} legend="Change password" collapsible>
+      <Fieldset closed={closed} legend={t('userregistration:changePasswordLegend')} collapsible>
         <Input
-          label="Current password"
+          label={t('userregistration:currentPasswordInput')}
           type="password"
           name="currentPassword"
           value={values.currentPassword}
@@ -35,7 +37,7 @@ const PasswordChangeForm = ({ id, closed }) => {
           error={errors.currentPassword}
         />
         <Input
-          label="New password"
+          label={t('userregistration:newPasswordInput')}
           type="password"
           name="newPassword"
           value={values.newPassword}
@@ -43,7 +45,7 @@ const PasswordChangeForm = ({ id, closed }) => {
           error={errors.newPassword}
         />
         <Input
-          label="Confirm password"
+          label={t('userregistration:confirmedPasswordInput')}
           type="password"
           name="confirmedPassword"
           value={values.confirmedPassword}
@@ -54,10 +56,10 @@ const PasswordChangeForm = ({ id, closed }) => {
           right
           type="submit"
           disabled={!isValid}
-          tooltip="Save new password"
-          alt="Save new password"
+          tooltip={t('userregistration:changePasswordButtonAlt')}
+          alt={t('userregistration:changePasswordButtonAlt')}
         >
-          Submit
+          {t('userregistration:changePasswordButton')}
         </Button>
       </Fieldset>
     </Form>

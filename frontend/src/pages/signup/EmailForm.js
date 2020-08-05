@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { useFormValidation } from 'utils';
 import { user } from 'tasks';
@@ -9,6 +10,8 @@ import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 import { SubmitInput, Form, Fieldset } from 'components/form';
 
 const EmailForm = ({ setAccountType }) => {
+  const { t } = useTranslation();
+
   const inputRef = useRef();
 
   useEffect(() => {
@@ -58,9 +61,9 @@ const EmailForm = ({ setAccountType }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Fieldset legend="Enter e-mail address to sign up">
+      <Fieldset legend={t('signup:emailLegend')}>
         <SubmitInput
-          label="E-mail"
+          label={t('signup:emailInput')}
           name="email"
           value={values.email}
           onChange={handleChange}

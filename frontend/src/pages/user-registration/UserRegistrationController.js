@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next'
 
 import withContext from 'context';
 import { getURLSearchParam } from 'utils';
@@ -15,6 +16,8 @@ import PasswordChangeForm from './PasswordChangeForm';
 const UserRegistration = ({
   currentUser: { id, firstName, middleName, lastName, email, mobileNumber, type }
 }) => {
+  const { t } = useTranslation()
+
   const [newEmail] = useState(getURLSearchParam('email'));
   /**
    * Update user with sign up email if missing
@@ -35,7 +38,7 @@ const UserRegistration = ({
 
   return (
     <TextBox>
-      <H1>Incomplete registration</H1>
+      <H1>{t('userregistration:title')}</H1>
       <PersonalInformationForm
         firstName={firstName}
         middleName={middleName}

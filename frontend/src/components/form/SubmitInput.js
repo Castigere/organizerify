@@ -128,7 +128,7 @@ const SubmitInput = ({ label, error, focus, isValid, onSubmit, ...props }) => {
 
   return (
     <Label error={error}>
-      {label}:
+      {label}
       <Tooltip text={error} open={isTooltipOpen} arrow>
         <SubmitInputContainer>
           <SubmitInputField ref={focus} {...props} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next'
 
 import { user } from 'tasks';
 import { useFormValidation } from 'utils';
@@ -17,6 +18,7 @@ const PersonalInformationForm = ({
   id,
   closed
 }) => {
+  const { t } = useTranslation()
   const { isValid, values, errors, handleChange } = useFormValidation(
     { firstName, middleName, lastName, mobileNumber, email },
     personalInformationValidation
@@ -29,9 +31,9 @@ const PersonalInformationForm = ({
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Fieldset closed={closed} legend="Personal information" collapsible>
+      <Fieldset closed={closed} legend={t('userregistration:personalInformationLegend')} collapsible>
         <Input
-          label="First name"
+          label={t('userregistration:firstNameInput')}
           type="text"
           name="firstName"
           value={values.firstName}
@@ -39,7 +41,7 @@ const PersonalInformationForm = ({
           error={errors.firstName}
         />
         <Input
-          label="Middle name"
+          label={t('userregistration:middleNameInput')}
           type="text"
           name="middleName"
           value={values.middleName}
@@ -47,7 +49,7 @@ const PersonalInformationForm = ({
           error={errors.middleName}
         />
         <Input
-          label="Last name"
+          label={t('userregistration:lastNameInput')}
           type="text"
           name="lastName"
           value={values.lastName}
@@ -55,7 +57,7 @@ const PersonalInformationForm = ({
           error={errors.lastName}
         />
         <Input
-          label="Mobile number"
+          label={t('userregistration:mobileNumberInput')}
           type="text"
           name="mobileNumber"
           value={values.mobileNumber}
@@ -63,7 +65,7 @@ const PersonalInformationForm = ({
           error={errors.mobileNumber}
         />
         <Input
-          label="Email address"
+          label={t('userregistration:emailInput')}
           type="text"
           name="email"
           value={values.email}
@@ -74,10 +76,10 @@ const PersonalInformationForm = ({
           right
           type="submit"
           disabled={!isValid}
-          tooltip="Save updated profile"
-          alt="Save updated profile"
+          tooltip={t('userregistration:updateButtonAlt')}
+          alt={t('userregistration:updateButtonAlt')}
         >
-          Submit
+          {t('userregistration:updateButton')}
         </Button>
       </Fieldset>
     </Form>

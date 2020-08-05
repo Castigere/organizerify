@@ -6,7 +6,8 @@ import {
   trimWhitespaces,
   objectLength,
   objectIncludes,
-  getURLSearchParam
+  getURLSearchParam,
+  forWhitespaces
 } from './helpers';
 
 export {
@@ -18,5 +19,6 @@ export {
   trimWhitespaces,
   objectLength,
   objectIncludes,
-  getURLSearchParam
+  getURLSearchParam,
+  forWhitespaces
 };

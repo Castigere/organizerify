@@ -1,0 +1,42 @@
+{
+  "en": {
+    "title": "Complete registration",
+    "personalInformationLegend": "Personal information",
+    "firstNameInput": "First name",
+    "middleNameInput": "Middle name",
+    "lastNameInput": "Last name",
+    "mobileNumberInput": "Mobile number",
+    "emailInput": "E-mail address",
+    "updateButton": "Save",
+    "updateButtonAlt": "Save updated profile",
+    "changePasswordLegend": "Change password",
+    "currentPasswordInput": "Current password",
+    "newPasswordInput": "New password",
+    "confirmedPasswordInput": "Confirm new password",
+    "changePasswordButton": "Save",
+    "changePasswordButtonAlt": "Save new password",
+    "validation": {
+      "firstNameMaxLength": "First name contains too many characters",
+      "firstNameNoWhitespaces": "First name cannot contain any spaces",
+      "firstNameRequired": "First name is required",
+      "middleNameMaxLength": "Middle name contains too many characters",
+      "middleNameNoWhitespaces": "Middle name cannot contain any spaces",
+      "lastNameMaxLength": "Last name contains too many characters",
+      "lastNameNoWhitespaces": "Last name cannot contain any spaces",
+      "lastNameRequired": "Last name is required",
+      "mobileNumberMaxLength": "Mobile number is too long",
+      "emailMaxLength": "E-mail address contains too many characters",
+      "emailNotValidFormat": "Not an e-mail address",
+      "emailNoWhitespaces": "E-mail address cannot contain any spaces",
+      "emailNotAvailable": "E-mail address is not available",
+      "emailRequired": "E-mail address is required",
+      "currentPasswordRequired": "Enter current password",
+      "newPasswordMinLength": "Password needs to be at least eight characters long",
+      "newPasswordMaxLength": "Password contains too many characters",
+      "newPasswordNoWhitespaces": "Password cannot contain any spaces",
+      "newPasswordRequired": "Enter a new password",
+      "confirmedPasswordNotMatching": "Passwords not matching",
+      "confirmedPasswordRequired": "Confirm new password"
+    }
+  }
+}

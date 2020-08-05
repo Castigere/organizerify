@@ -52,7 +52,7 @@ const Input = ({ label, error, focus, ...props }) => {
   return (
     <>
       <Label error={error}>
-        {label}:
+        {label}
         <Tooltip text={error} open={isTooltipOpen} arrow>
           <InputStyle ref={focus} {...props} />
         </Tooltip>

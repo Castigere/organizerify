@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 
 import * as serviceWorker from './serviceWorker';
 import { StoreProvider } from './context/store';
+import 'i18n';
 
 import { Messaging } from './containers/Messaging';
 import App from './App';

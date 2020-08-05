@@ -1,44 +1,38 @@
 import * as yup from 'yup';
+import i18next from 'i18next';
 
-import { REGEXP_EMAIL, REGEXP_WHITESPACES } from 'utils';
-
-const forWhitespaces = [
-  'Field has no whitespaces',
-  'Field cannot contain any whitespaces',
-  value => (REGEXP_WHITESPACES.test(value) ? true : false)
-];
+import { forWhitespaces } from 'utils';
 
 const emailValidation = yup.object().shape({
   email: yup
     .string()
-    .max(64, 'Email not too long', 'Email address had too many characters')
-    .test(...forWhitespaces)
-    .email('Not an email address')
-    .test('Valid email address', 'Not a valid email address', value => REGEXP_EMAIL.test(value))
+    .max(64, i18next.t('signup:validation.emailMaxLength'))
+    .test(...forWhitespaces(i18next.t('signup:validation.emailNoWhitespaces')))
+    .email(i18next.t('signup:validation.emailNotValidFormat'))
 });
 
 const newPasswordValidtaion = yup.object().shape({
   newPassword: yup
     .string()
-    .min(8, 'Password needs to be at least eight characters long')
-    .max(64, 'Password is too long')
-    .test(...forWhitespaces)
-    .required('This field is required'),
+    .min(8, i18next.t('signup:validation.passwordMinLength'))
+    .max(64, i18next.t('signup:validation.passwordMaxLength'))
+    .test(...forWhitespaces(i18next.t('signup:validation.passwordNoWhitespaces')))
+    .required(i18next.t('signup:validation.passwordRequired')),
   confirmedPassword: yup.string().when('newPassword', {
     is: val => val && val.length > 0,
     then: yup
       .string()
-      .oneOf([yup.ref('newPassword')], 'Passwords not matching')
-      .required('This field is required')
+      .oneOf([yup.ref('newPassword')], i18next.t('signup:validation.passwordNotMaching'))
+      .required(('signup:validation.passwordRequired'))
   })
 });
 
 const passwordValidation = yup.object().shape({
   password: yup
     .string()
-    .test(...forWhitespaces)
-    .min(1, 'Enter password')
-    .required('Enter password')
+    .test(...forWhitespaces('signup:validation.emailNoWhitespaces'))
+    .min(1, i18next.t('signup:validation.passwordRequired'))
+    .required(i18next.t('signup:validation.passwordRequired'))
 });
 
 export { emailValidation, passwordValidation, newPasswordValidtaion };

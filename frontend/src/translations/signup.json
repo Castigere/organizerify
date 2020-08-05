@@ -1,0 +1,24 @@
+{
+  "en": {
+    "title": "Log in",
+    "emailLegend": "Enter e-mail to log in or sign up",
+    "emailInput": "E-mail",
+    "emailNotInUseInfo": "The entered e-mail address is not in use. Enter a password to create a local user or sign up with one of the following identity providers.",
+    "newUserLegend": "Create new local user?",
+    "passwordInput": "Password",
+    "confirmedPasswordInput": "Confirm password",
+    "signUpButton": "Sign up",
+    "logInLegend": "Enter password to log in",
+    "logInButton": "Log in",
+    "validation": {
+      "emailNoWhitespaces": "An e-mail address cannot contain any spaces",
+      "emailMaxLength": "E-mail contains too many characters",
+      "emailNotValidFormat": "Not an e-mail address",
+      "passwordMinLength": "Password must be at least eight characters long",
+      "passwordMaxLength": "Password is too long",
+      "passwordNoWhitespaces": "A password cannot contain any spaces",
+      "passwordNotMaching": "Passwords do not match",
+      "passwordRequired": "Pease enter your password"
+    }
+  }
+}

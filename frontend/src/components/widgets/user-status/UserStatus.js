@@ -38,7 +38,7 @@ const RightContainer = styled.div`
   }
 `;
 
-const UserStatusWidget = ({ username }) => (
+const UserStatus = ({ username }) => (
   <StyledUserStatusWidget>
     <ProfileImageMedium src={defaultImage} alt="profile image" />
     <RightContainer>
@@ -50,7 +50,7 @@ const UserStatusWidget = ({ username }) => (
   </StyledUserStatusWidget>
 );
 
-UserStatusWidget.propTypes = {
+UserStatus.propTypes = {
   username: PropTypes.string.isRequired
 };
 
@@ -60,4 +60,4 @@ const mapStateToProps = (state, selectors) => {
   };
 };
 
-export default withContext(UserStatusWidget, mapStateToProps);
+export default withContext(UserStatus, mapStateToProps);

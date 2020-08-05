@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-import { UserStatusWidget } from 'components/widgets';
+import { UserStatus } from 'components/widgets';
 
 const StyledHeader = styled.div`
   z-index: 10000;
@@ -64,10 +64,10 @@ const Header = () => {
 
   return (
     <StyledHeader styled={style}>
-      <RightHeaderContainer />
+      <RightHeaderContainer></RightHeaderContainer>
       <CenterHeaderContainer>
         <Debug />
-        <UserStatusWidget />
+        <UserStatus />
       </CenterHeaderContainer>
       <LeftHeaderContainer />
     </StyledHeader>

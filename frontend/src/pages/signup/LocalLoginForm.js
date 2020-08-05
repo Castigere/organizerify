@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { useFormValidation } from 'utils';
 import { user } from 'tasks';
@@ -9,6 +10,7 @@ import { Input, Form, Fieldset } from 'components/form';
 import { Button } from 'components/buttons';
 
 const LocalLoginForm = ({ email }) => {
+  const { t } = useTranslation();
   const { values, errors, isValid, handleChange } = useFormValidation(
     { password: '' },
     passwordValidation,
@@ -22,9 +24,9 @@ const LocalLoginForm = ({ email }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Fieldset legend="Enter password to log in">
+      <Fieldset legend={t('signup:logInLegend')}>
         <Input
-          label="Password"
+          label={t('signup:passwordInput')}
           name="password"
           type="password"
           value={values.password}
@@ -32,7 +34,7 @@ const LocalLoginForm = ({ email }) => {
           error={errors.password}
         />
         <Button right disabled={!isValid}>
-          Log in
+          {t('signup:logInButton')}
         </Button>
       </Fieldset>
     </Form>
