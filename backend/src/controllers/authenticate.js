@@ -34,8 +34,6 @@ exports.authenticateGoogleCallback = () => {
       if (originalReferer.length > 0 && signupEmail.length > 0)
         return `${AUTH_SUCCESS_REDIRECT_URL}?url=${originalReferer}&email=${signupEmail}`;
     };
-    console.log('CALLBACK', successRedirectURL());
-
     passport.authenticate('google', {
       scope: ['profile'],
       successRedirect: successRedirectURL(),

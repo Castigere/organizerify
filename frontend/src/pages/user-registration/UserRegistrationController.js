@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 
 import withContext from 'context';
 import { getURLSearchParam } from 'utils';
 import { user } from 'tasks';
-import { REGEXP_EMAIL } from 'utils';
+import { REGEXP_EMAIL, useS3FileStorage } from 'utils';
 
 import { TextBox } from 'components/form';
 import { H1 } from 'components/typography';
+import { ImageDropzone } from 'components/images';
 
 import PersonalInformationForm from './PersonalInformationForm';
 import PasswordChangeForm from './PasswordChangeForm';
@@ -16,9 +17,9 @@ import PasswordChangeForm from './PasswordChangeForm';
 const UserRegistration = ({
   currentUser: { id, firstName, middleName, lastName, email, mobileNumber, type }
 }) => {
-  const { t } = useTranslation()
-
+  const { t } = useTranslation();
   const [newEmail] = useState(getURLSearchParam('email'));
+
   /**
    * Update user with sign up email if missing
    */
@@ -48,6 +49,7 @@ const UserRegistration = ({
         id={id}
       />
       {type === 'local' && <PasswordChangeForm id={id} closed />}
+      <ImageDropzone />
     </TextBox>
   );
 };

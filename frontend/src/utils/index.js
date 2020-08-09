@@ -1,4 +1,5 @@
 import useFormValidation from './useFormValidation';
+import useS3FileStorage from './useS3FileStorage';
 import PrivateRoute from './PrivateRoute';
 import { REGEXP_WHITESPACES, REGEXP_EMAIL } from './regexp';
 import {
@@ -20,5 +21,6 @@ export {
   objectLength,
   objectIncludes,
   getURLSearchParam,
-  forWhitespaces
+  forWhitespaces,
+  useS3FileStorage
 };

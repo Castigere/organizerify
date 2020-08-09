@@ -3,14 +3,13 @@ import { initReactI18next } from 'react-i18next';
 
 import signup from 'translations/signup';
 import userregistration from 'translations/userregistration';
+import components from 'translations/components';
 
 const resources = {
   en: {
     signup: signup.en,
     userregistration: userregistration.en,
-    morradi: {
-      pageHeader: 'Ikke sign up'
-    }
+    components: components.en
   }
 };
 

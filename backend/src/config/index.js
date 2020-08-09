@@ -19,6 +19,9 @@ const CORS_ORIGIN = NODE_ENV === 'production' ? `https://${HOST}:${PORT}` : 'htt
 const SESSION_COOKIE_SECURE = NODE_ENV === 'production';
 const SESSION_COOKIE_SAMESITE = NODE_ENV === 'production';
 const AUTH_SUCCESS_REDIRECT_URL = process.env.AUTH_SUCCESS_REDIRECT_URL;
+const S3_ACCESS_KEY = process.env.S3_ACCESS_KEY;
+const S3_SECRET_KEY = process.env.S3_SECRET_KEY;
+const S3_ENDPOINT = process.env.S3_ENDPOINT;
 
 export {
   APPLICATION_NAME,
@@ -40,5 +43,8 @@ export {
   CORS_ORIGIN,
   SESSION_COOKIE_SECURE,
   SESSION_COOKIE_SAMESITE,
-  AUTH_SUCCESS_REDIRECT_URL
+  AUTH_SUCCESS_REDIRECT_URL,
+  S3_ACCESS_KEY,
+  S3_SECRET_KEY,
+  S3_ENDPOINT
 };
