@@ -1,5 +1,8 @@
 {
   "en": {
-    "imageDropzoneAlt": "Drag and drop or click to upload image"
+    "imageDropzoneAlt": "Drag and drop or click to upload image",
+    "imageDropzoneUploadAlt": "Upload image",
+    "imageDropzoneCropAlt": "Crop image before upload",
+    "imageDropzoneDiscardAlt": "Discard image"
   }
 }

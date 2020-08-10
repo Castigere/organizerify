@@ -15,6 +15,9 @@
     "confirmedPasswordInput": "Confirm new password",
     "changePasswordButton": "Save",
     "changePasswordButtonAlt": "Save new password",
+    "profileImageUploadLegend": "Upload profile image",
+    "profileImageUploadButton": "Upload",
+    "profileImageUploadButtonAlt": "Upload profile image",
     "validation": {
       "firstNameMaxLength": "First name contains too many characters",
       "firstNameNoWhitespaces": "First name cannot contain any spaces",

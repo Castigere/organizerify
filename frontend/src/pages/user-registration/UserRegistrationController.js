@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import withContext from 'context';
 import { getURLSearchParam } from 'utils';
 import { user } from 'tasks';
-import { REGEXP_EMAIL, useS3FileStorage } from 'utils';
+import { REGEXP_EMAIL } from 'utils';
 
 import { TextBox } from 'components/form';
 import { H1 } from 'components/typography';
-import { ImageDropzone } from 'components/images';
 
 import PersonalInformationForm from './PersonalInformationForm';
 import PasswordChangeForm from './PasswordChangeForm';
+import ProfileImageUpload from './ProfileImageUpload';
 
 const UserRegistration = ({
   currentUser: { id, firstName, middleName, lastName, email, mobileNumber, type }
@@ -48,8 +48,8 @@ const UserRegistration = ({
         mobileNumber={mobileNumber}
         id={id}
       />
+      <ProfileImageUpload />
       {type === 'local' && <PasswordChangeForm id={id} closed />}
-      <ImageDropzone />
     </TextBox>
   );
 };

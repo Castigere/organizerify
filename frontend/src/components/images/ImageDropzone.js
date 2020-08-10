@@ -4,42 +4,38 @@ import { useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 
 import { Tooltip } from 'components';
-import { Button } from 'components/buttons';
 
-import arrowUpUpload from 'assets/arrow_up_upload.svg';
+import arrowUpUploadIcon from 'assets/arrow_up_upload.svg';
+import settingsIcon from 'assets/settings.svg';
+import trashcanIcon from 'assets/trashcan.svg';
 
 const Container = styled.div`
-  background: #fcfcfc;
-  margin: 8em;
+  margin: 12em;
   margin-top: 2em;
   margin-bottom: 2em;
-  height: 14em;
+  height: 20em;
+  padding-bottom: 1em;
   width: max;
   @media only screen and (max-width: 57em) {
-    /* margin: 0.2em;
-    margin-top: 2em;
-    margin-left: 0em;
-    /* margin-right: 1em; */
-    /* padding-bottom: 4em; */
-    /* width: 90%;  */
     margin: 0;
-    margin-left: -10px;
-    margin-right: 5px;
     padding: 0;
     margin-top: 1.5em;
+    padding-bottom: 4em;
   }
 `;
 
 const Dropzone = styled.div`
+  background: #fcfcfc;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 10em;
+  height: 100%;
   width: 100%;
   border-radius: 10px;
   border: 1px solid #ccc;
-  padding: 1em;
-  margin-bottom: 1.5em;
+  padding-bottom: 1.5em;
+  padding-top: 1em;
+  margin-bottom: 2.4em;
   cursor: pointer;
   ${({ isDragActive }) =>
     isDragActive &&
@@ -48,7 +44,7 @@ const Dropzone = styled.div`
       transition: box-shadow 0.1s ease-in;
     `}
   @media only screen and (max-width: 57em) {
-    /* width: 90%; */
+    margin-bottom: 1.15em;
   }
 `;
 
@@ -65,8 +61,34 @@ const UploadArrow = styled.img`
     `}
 `;
 
+const PreviewContainer = styled.div`
+  z-index: 1000;
+  height: 100%;
+`;
+
+const PreviewIconsContainer = styled.div`
+  position: absolute;
+  margin-top: -0.15em;
+  margin-left: 0.1em;
+`;
+
+const PreviewIcon = styled.img`
+  height: 1.3em;
+  margin-right: 1em;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 40%;
+    }
+  }
+
+  animation: 0.5s 0s ease-in fadeIn;
+`;
+
 const PreviewImage = styled.img`
-  /* display: inline; */
   height: 100%;
   border-radius: 5px;
   box-shadow: 0 0 5px 0 #ccc;
@@ -84,36 +106,54 @@ const PreviewImage = styled.img`
 
 const ImageDropzone = () => {
   const { t } = useTranslation();
-
   const [file, setFile] = useState();
   const onDrop = useCallback(acceptedFiles => {
-    console.log(acceptedFiles[0]);
     setFile({ preview: URL.createObjectURL(acceptedFiles[0]) });
   }, []);
-
-  console.log(file);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: 'image/*',
     multiple: false,
+    noDragEventsBubbling: true,
     onDrop
   });
+
+  const removeImagePreview = () => {
+    URL.revokeObjectURL(file.preview);
+    setFile();
+  };
+
   return (
     <Container>
-      <Tooltip arrow text={t('components:imageDropzoneAlt')}>
-        <Dropzone
-          isDragActive={isDragActive}
-          {...getRootProps()}
-          alt={t('components:imageDropzoneAlt')}
-        >
-          <UploadArrow src={arrowUpUpload} isDragActive={isDragActive} />
-          <input {...getInputProps()} />
-          {file && <PreviewImage src={file.preview} />}
-        </Dropzone>
-      </Tooltip>
-      <Button disabled={file ? false : true} right tooltip="Upload image">
-        Upload
-      </Button>
+      <Dropzone
+        isDragActive={isDragActive}
+        {...getRootProps({
+          onClick: e => {
+            // Stop prpgagation so we can manually trigger onClicks if an image is previewed
+            file && e.stopPropagation();
+          }
+        })}
+        alt={t('components:imageDropzoneAlt')}
+      >
+        <UploadArrow src={arrowUpUploadIcon} isDragActive={isDragActive} />
+        <input {...getInputProps()} />
+        {file && (
+          <PreviewContainer>
+            <PreviewImage src={file.preview} />
+            <PreviewIconsContainer>
+              <Tooltip arrow text={t('components:imageDropzoneUploadAlt')}>
+                <PreviewIcon src={arrowUpUploadIcon} />
+              </Tooltip>
+              <Tooltip arrow text={t('components:imageDropzoneCropAlt')}>
+                <PreviewIcon src={settingsIcon} />
+              </Tooltip>
+              <Tooltip arrow text={t('components:imageDropzoneDiscardAlt')}>
+                <PreviewIcon src={trashcanIcon} onClick={removeImagePreview} />
+              </Tooltip>
+            </PreviewIconsContainer>
+          </PreviewContainer>
+        )}
+      </Dropzone>
     </Container>
   );
 };

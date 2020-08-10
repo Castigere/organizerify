@@ -18,9 +18,11 @@ const InputBase = styled.input`
   @media only screen and (max-width: 57em) {
     padding: 0;
     width: 99%;
+    height: 2.5em;
     margin: 0;
     margin-top: 1em;
     margin-bottom: 1.1em;
+    border-radius: 1px;
   }
 `;
 
