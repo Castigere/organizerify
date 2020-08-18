@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 
 import * as serviceWorker from './serviceWorker';
 import { StoreProvider } from './context/store';
@@ -16,9 +15,7 @@ ReactDOM.render(
   <Router>
     <StoreProvider>
       <>
-        <ThemeProvider theme={{ accent: '#4e9ce5', headercolor: '#2c3e50' }}>
-          <App />
-        </ThemeProvider>
+        <App />
         <Messaging />
       </>
     </StoreProvider>
