@@ -15,11 +15,12 @@
   "scripts": {
     "dev": "yarn build:packages && concurrently --kill-others  \"yarn --cwd backend start:dev\" \"yarn --cwd frontend dev\"",
     "storybook": "yarn --cwd components storybook",
+    "build:components": "yarn --cwd components build",
     "build:packages": "yarn --cwd packages/apollo-link-console-log build:js",
     "build:frontend": "yarn --cwd frontend build",
     "build:backend": "yarn --cwd backend transpile",
     "build:copyfiles": "cd backend && copyfiles -u 1 build/**/*.* ../build && cd .. && copyfiles -u 1 backend/package.json build && copyfiles -u 1 frontend/build/**/*.* build",
-    "build:deployment": "yarn build:packages && yarn build:frontend && yarn build:backend && yarn build:copyfiles",
+    "build:deployment": "yarn build:packages && yarn build:components && yarn build:frontend && yarn build:backend && yarn build:copyfiles",
     "deploy": "yarn build:deployment && cd build && nodechef deploy -i organizerify"
   },
   "devDependencies": {

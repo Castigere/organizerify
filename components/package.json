@@ -1,9 +1,21 @@
 {
-  "name": "components",
+  "name": "@castigere/components",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "files": [
+    "dist"
+  ],
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@storybook/addon-actions": "^6.0.16",
+    "@storybook/addon-essentials": "^6.0.16",
+    "@storybook/addon-links": "^6.0.16",
+    "@storybook/node-logger": "^6.0.16",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.16",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -11,23 +23,19 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "@types/styled-components": "^5.1.2",
     "@types/storybook__react": "^5.2.1",
+    "@types/styled-components": "^5.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
     "styled-components": "^5.1.1",
-    "typescript": "~3.7.2",
-    "@storybook/addon-actions": "^6.0.16",
-    "@storybook/addon-essentials": "^6.0.16",
-    "@storybook/addon-links": "^6.0.16",
-    "@storybook/node-logger": "^6.0.16",
-    "@storybook/preset-create-react-app": "^3.1.4",
-    "@storybook/react": "^6.0.16"
+    "typescript": "~3.7.2"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "build": "rollup -c",
+    "build-watch": "rollup -c -w"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,6 +54,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "babel-loader": "8.0.6",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "^6.4.0",
@@ -54,12 +65,21 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.11.0",
     "eslint-plugin-react-hooks": "^2.1.2",
+    "eslint-plugin-tsdoc": "^0.2.6",
     "prettier": "^1.17.1",
     "react-is": "^16.13.1",
+    "rollup": "^2.26.5",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.27.2",
     "stylelint": "^13.6.0",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-standard": "^20.0.0",
-    "stylelint-prettier": "^1.1.2",
-    "babel-loader": "8.0.6"
+    "stylelint-prettier": "^1.1.2"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^4.11.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "styled-components": "^4.4.0"
   }
 }

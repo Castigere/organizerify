@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
+import { Button } from '@castigere/components';
 
 import { user } from 'tasks';
 import { useFormValidation } from 'utils';
 import { passwordValidation } from './user-registration-validation';
 
 import { Input, Form, Fieldset } from 'components/form';
-import { Button } from 'components/buttons';
 
 const PasswordChangeForm = ({ id, closed }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const { isValid, values, errors, handleChange } = useFormValidation(
     { currentPassword: '', newPassword: '', confirmedPassword: '' },
     passwordValidation

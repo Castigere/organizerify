@@ -33,4 +33,6 @@ const Tooltip = ({ text = 'Information', open, children, arrow, ...props }: Tool
   );
 };
 
+export { MaterialTooltip };
+
 export default Tooltip;

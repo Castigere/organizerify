@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
+import { Button } from '@castigere/components';
 
 import { user } from 'tasks';
 import { useFormValidation } from 'utils';
 import { personalInformationValidation } from './user-registration-validation';
 
 import { Input, Form, Fieldset } from 'components/form';
-import { Button } from 'components/buttons';
 
 const PersonalInformationForm = ({
   firstName,
@@ -18,7 +18,7 @@ const PersonalInformationForm = ({
   id,
   closed
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const { isValid, values, errors, handleChange } = useFormValidation(
     { firstName, middleName, lastName, mobileNumber, email },
     personalInformationValidation
@@ -31,7 +31,11 @@ const PersonalInformationForm = ({
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Fieldset closed={closed} legend={t('userregistration:personalInformationLegend')} collapsible>
+      <Fieldset
+        closed={closed}
+        legend={t('userregistration:personalInformationLegend')}
+        collapsible
+      >
         <Input
           label={t('userregistration:firstNameInput')}
           type="text"

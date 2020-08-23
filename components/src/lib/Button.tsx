@@ -20,7 +20,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   &:hover {
     color: white;
-    background: ${props => props.theme.ACCENT};
+    background: ${props => props.theme.ACCENT || 'pink'};
   }
 
   &:focus {
@@ -54,7 +54,16 @@ export interface ButtonProps {
   right?: boolean;
   onClick?: () => void;
 }
-
+/**
+ * Ye' olde clickable button
+ *
+ * @param disabled - `boolean`: Disable button
+ * @param right - `boolean`: Align button on right side of parent
+ * @param tooltip - `string`: Text for optional tooltip when hovering button
+ * @param onClick - `function`: Click handler
+ *
+ * @link https://organizerify.components/button.html
+ */
 const Button = ({ disabled, tooltip, right, ...props }: ButtonProps) =>
   tooltip && !disabled ? (
     <Tooltip arrow text={tooltip} enterDelay={500}>

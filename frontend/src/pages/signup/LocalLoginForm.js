@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { useFormValidation } from 'utils';
 import { user } from 'tasks';
 import { passwordValidation } from './signup-validation';
+import { Button } from 'components/buttons';
 
 import { Input, Form, Fieldset } from 'components/form';
-import { Button } from 'components/buttons';
 
 const LocalLoginForm = ({ email }) => {
   const { t } = useTranslation();

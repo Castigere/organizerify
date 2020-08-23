@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import Button, { ButtonProps } from 'components/Button';
+import Button, { ButtonProps } from 'lib/Button';
 
 export default {
   title: 'Components/Button',
@@ -10,4 +10,4 @@ export default {
 
 const Template: Story<ButtonProps> = args => <Button {...args}> Click me! </Button>;
 
-export const Primary = Template.bind({});
+export const Normal = Template.bind({});

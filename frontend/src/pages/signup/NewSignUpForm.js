@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { Button } from 'components/buttons';
 
 import { useFormValidation, getURLSearchParam } from 'utils';
 import { newPasswordValidtaion } from './signup-validation';
@@ -8,7 +9,7 @@ import { user } from 'tasks';
 import { GOOGLE_AUTH_ENDPOINT, FACEBOOK_AUTH_ENDPOINT } from 'config';
 
 import { Input, Form, Fieldset, Panel } from 'components/form';
-import { Button, SignUpWithFacebookButton, SignUpWithGoogleButton } from 'components/buttons';
+import { SignUpWithFacebookButton, SignUpWithGoogleButton } from 'components/buttons';
 import { HorizontallyAlign } from 'components/containers';
 
 const NewSignUpForm = ({ email }) => {

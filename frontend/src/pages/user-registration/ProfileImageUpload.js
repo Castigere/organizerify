@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Form, Fieldset } from 'components/form';
-import { Button } from 'components/buttons';
+import { Button } from '@castigere/components';
 import { ImageDropzone } from 'components/images';
 
 const ProfileImageUpload = () => {
