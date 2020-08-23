@@ -46,7 +46,6 @@
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.16",
     "@types/storybook__react": "^5.2.1",
-    "babel-loader": "^8.1.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "^6.4.0",
