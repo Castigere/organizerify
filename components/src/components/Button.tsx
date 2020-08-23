@@ -1,10 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import Tooltip from '../Tooltip/Tooltip';
+import Tooltip from './Tooltip';
 
-const StyledButton = styled.button`
+interface StyledButtonProps {
+  right: boolean;
+}
+
+const StyledButton = styled.button<StyledButtonProps>`
   border: 1px solid black;
   background: inherit;
   height: 2.5em;
@@ -45,23 +48,20 @@ const StyledButton = styled.button`
     `}
 `;
 
-const Button = ({ disabled, tooltip, ...props }) =>
+export interface ButtonProps {
+  tooltip?: string;
+  disabled?: boolean;
+  right?: boolean;
+  onClick?: () => void;
+}
+
+const Button = ({ disabled, tooltip, right, ...props }: ButtonProps) =>
   tooltip && !disabled ? (
     <Tooltip arrow text={tooltip} enterDelay={500}>
-      <StyledButton {...props} />
+      <StyledButton right={right ? true : false} {...props}></StyledButton>
     </Tooltip>
   ) : (
-    <StyledButton disabled={disabled ? true : false} {...props} />
+    <StyledButton right={right ? true : false} disabled={disabled ? true : false} {...props} />
   );
-
-Button.defaultProps = {
-  children: 'Button me!'
-};
-
-Button.propTypes = {
-  children: PropTypes.string,
-  disabled: PropTypes.bool,
-  tooltip: PropTypes.string
-};
 
 export default Button;

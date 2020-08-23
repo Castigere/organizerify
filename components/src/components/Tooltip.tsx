@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import MaterialTooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -18,23 +17,20 @@ const styles = {
 
 const StyledTooltip = withStyles(styles)(MaterialTooltip);
 
-const Tooltip = ({ text, open, children, ...props }) => {
+export interface TooltipProps {
+  arrow: boolean;
+  text: string;
+  open?: boolean;
+  enterDelay?: number;
+  children: any;
+}
+
+const Tooltip = ({ text = 'Information', open, children, arrow, ...props }: TooltipProps) => {
   return (
-    <StyledTooltip title={text} open={open} {...props}>
+    <StyledTooltip arrow={arrow} title={text} open={open} {...props}>
       {children}
     </StyledTooltip>
   );
-};
-
-Tooltip.defaultProps = {
-  text: 'Information'
-};
-
-Tooltip.propTypes = {
-  text: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  open: PropTypes.bool,
-  arrow: PropTypes.bool
 };
 
 export default Tooltip;

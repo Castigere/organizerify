@@ -9,10 +9,12 @@
   "workspaces": [
     "frontend",
     "backend",
+    "components",
     "packages/*"
   ],
   "scripts": {
     "dev": "yarn build:packages && concurrently --kill-others  \"yarn --cwd backend start:dev\" \"yarn --cwd frontend dev\"",
+    "storybook": "yarn --cwd components storybook",
     "build:packages": "yarn --cwd packages/apollo-link-console-log build:js",
     "build:frontend": "yarn --cwd frontend build",
     "build:backend": "yarn --cwd backend transpile",
